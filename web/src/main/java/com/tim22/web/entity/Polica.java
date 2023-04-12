@@ -3,7 +3,7 @@ package com.tim22.web.entity;
 public class Polica {
     private String naziv;
 
-    //oznaka da li je primarna - tip boolean??
+
 
     private boolean primarna;
 
