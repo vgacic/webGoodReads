@@ -1,22 +1,38 @@
 package com.tim22.web.entity;
+import jakarta.persistence.*;
+
 import java.util.*;
+@Entity
 public class Korisnik {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String ime;
+    @Column
     private String prezime;
 
+    @Column(unique = true)
     private String korisnickoIme; //jedinstveno?
-
+    @Column(unique = true)
     private String mail; //jedinstvena?
-
+    @Column
     private String lozinka;
 
+    @Column
     private Date datumRodjenja; //ne znam da li mora date?
 
+    @Column
     private String profilnaSlika; //string zbog putanje do slike?
 
+    @Column
     private String opis;
 
+    @Column
     private String uloga; //citalac, autor, administraror
+
 
 
     //nisam sigurna da li nam trebaju seteri za mail i korisnicko ime jer su jedinstveni????
@@ -93,4 +109,6 @@ public class Korisnik {
     public void setUloga(String uloga) {
         this.uloga = uloga;
     }
+
+
 }

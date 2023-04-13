@@ -1,10 +1,20 @@
 package com.tim22.web.entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 import java.util.*;
+@Entity
 public class Knjiga {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String naslov;
     private String naslovnaFotografija;
 
-    private String ISBN;//medjunarodni identifikator knjige - jesu li oni jedinstveni???
+    private int ISBN;
 
     private Date datumObjavljivanja;
 
@@ -32,11 +42,11 @@ public class Knjiga {
         this.naslovnaFotografija = naslovnaFotografija;
     }
 
-    public String getISBN() {
+    public int getISBN() {
         return ISBN;
     }
 
-    public void setISBN(String ISBN) {
+    public void setISBN(int ISBN) {
         this.ISBN = ISBN;
     }
 
