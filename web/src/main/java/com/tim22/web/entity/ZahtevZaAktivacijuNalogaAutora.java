@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 
 import java.io.Serializable;
 import java.util.*;
+enum status{NA_CEKANJU, ODOBREN, ODBIJEN};
 @Entity
 public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
 
@@ -20,9 +21,21 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
 
     private Date datum;
 
-    enum status{NA_CEKANJU, ODOBREN, ODBIJEN};
+    private status stanje;
 
-    //nema getera i setera za status jel to postoji ?
+
+    public Long getId() {
+        return id;
+    }
+
+    public status getStanje() {
+        return stanje;
+    }
+
+    public void setStanje(status stanje) {
+        this.stanje = stanje;
+    }
+
     public String getEmail() {
         return email;
     }
