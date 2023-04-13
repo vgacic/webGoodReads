@@ -4,9 +4,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
 import java.util.*;
 @Entity
-public class ZahtevZaAktivacijuNalogaAutora {
+public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

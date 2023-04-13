@@ -1,12 +1,10 @@
 package com.tim22.web.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.*;
 @Entity
-public class Recenzija {
+public class Recenzija implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,6 +13,13 @@ public class Recenzija {
     private String tekst;
 
     private Date datumRecenzije;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "korisnik_id", referencedColumnName = "id")
+    private Korisnik korisnik;
+
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private StavkaPolice stavkaPolice;
 
 
     public int getOcena() {

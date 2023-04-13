@@ -2,11 +2,14 @@ package com.tim22.web.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-public class Autor extends Korisnik{
+public class Autor extends Korisnik implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,8 +18,9 @@ public class Autor extends Korisnik{
     private boolean aktivan;
 
 
+    @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Knjiga> SpisakKnjiga = new HashSet<>();
 
-   // private HashMap<Knjiga> SpisakKnjiga=new ArrayList<>();
 
 
     public boolean isAktivan() {
@@ -29,7 +33,5 @@ public class Autor extends Korisnik{
     }
 
 
-    //public ArrayList<String> getSpisakKnjiga() {
-     //   return SpisakKnjiga;
-   // }
+
 }

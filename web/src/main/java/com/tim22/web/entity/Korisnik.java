@@ -1,9 +1,10 @@
 package com.tim22.web.entity;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.*;
 @Entity
-public class Korisnik {
+public class Korisnik implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,14 +16,14 @@ public class Korisnik {
     private String prezime;
 
     @Column(unique = true)
-    private String korisnickoIme; //jedinstveno?
+    private String korisnickoIme;
     @Column(unique = true)
-    private String mail; //jedinstvena?
+    private String mail;
     @Column
     private String lozinka;
 
     @Column
-    private Date datumRodjenja; //ne znam da li mora date?
+    private Date datumRodjenja;
 
     @Column
     private String profilnaSlika; //string zbog putanje do slike?
@@ -33,7 +34,8 @@ public class Korisnik {
     @Column
     private String uloga; //citalac, autor, administraror
 
-
+    @OneToOne(mappedBy = "korisnik")
+    private Recenzija recenzija;
 
     //nisam sigurna da li nam trebaju seteri za mail i korisnicko ime jer su jedinstveni????
 

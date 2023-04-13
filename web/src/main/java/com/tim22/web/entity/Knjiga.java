@@ -1,12 +1,10 @@
 package com.tim22.web.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.*;
 @Entity
-public class Knjiga {
+public class Knjiga implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,16 +12,27 @@ public class Knjiga {
     private String naslov;
     private String naslovnaFotografija;
 
+    @Column(unique = true)
     private int ISBN;
 
+    @Column
     private Date datumObjavljivanja;
 
+    @Column
     private int brojStrana;
-
+    @Column
     private String opis;
+    @Column
 
     private String zanr;
+    @Column
     private double ocena;
+
+   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private StavkaPolice stavkaPolice;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Autor autor;
 
 
     public String getNaslov() {
