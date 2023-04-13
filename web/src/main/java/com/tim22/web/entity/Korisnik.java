@@ -4,38 +4,40 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Korisnik implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id", updatable = false, nullable = false)
+    protected Long id;
 
     @Column
-    private String ime;
+    protected String ime;
     @Column
-    private String prezime;
+    protected String prezime;
 
     @Column(unique = true)
-    private String korisnickoIme;
+    protected String korisnickoIme;
     @Column(unique = true)
-    private String mail;
+    protected String mail;
     @Column
-    private String lozinka;
+    protected String lozinka;
 
     @Column
-    private Date datumRodjenja;
+    protected Date datumRodjenja;
 
     @Column
-    private String profilnaSlika; //string zbog putanje do slike?
+    protected String profilnaSlika; //string zbog putanje do slike?
 
     @Column
-    private String opis;
+    protected String opis;
 
     @Column
-    private String uloga; //citalac, autor, administraror
+    protected String uloga; //citalac, autor, administraror
 
     @OneToOne(mappedBy = "korisnik")
-    private Recenzija recenzija;
+    protected Recenzija recenzija;
 
     //nisam sigurna da li nam trebaju seteri za mail i korisnicko ime jer su jedinstveni????
 

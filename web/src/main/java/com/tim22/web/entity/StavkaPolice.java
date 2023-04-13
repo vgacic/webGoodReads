@@ -19,7 +19,7 @@ public class StavkaPolice implements Serializable {
     private Polica polica;
 
     @OneToMany(mappedBy = "stavkaPolice",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Knjiga> knjige= new HashSet<>();
+    private Set<Knjiga> knjiga= new HashSet<>();
 
     @OneToMany
     private Set<Recenzija> recenzije = new HashSet<>();

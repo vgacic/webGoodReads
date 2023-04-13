@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@PrimaryKeyJoinColumn(name = "id")
 public class Autor extends Korisnik implements Serializable {
 
     @Id
@@ -18,6 +19,7 @@ public class Autor extends Korisnik implements Serializable {
     private boolean aktivan;
 
 
+    //popraviti
     @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Knjiga> SpisakKnjiga = new HashSet<>();
 
@@ -31,7 +33,5 @@ public class Autor extends Korisnik implements Serializable {
     public void setAktivan(boolean aktivan) {
         this.aktivan = aktivan;
     }
-
-
 
 }

@@ -13,15 +13,11 @@ public class Polica implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String naziv;
-
-
-
     private boolean primarna;
 
     @OneToMany(mappedBy = "polica", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<StavkaPolice> stavkaPolice = new HashSet<>();
 
-    //polje stavka police ???? iz klase  StavkaPolice objekat ovde dodati
 
 
     public String getNaziv() {
