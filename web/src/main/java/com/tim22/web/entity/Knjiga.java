@@ -28,8 +28,9 @@ public class Knjiga implements Serializable {
     @Column
     private double ocena;
 
-   @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private StavkaPolice stavkaPolice;
+   @ManyToOne
+   @JoinColumn(name = "stavka_police_id")
+   private StavkaPolice stavkaPolice;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Autor autor;

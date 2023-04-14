@@ -12,23 +12,18 @@ INSERT INTO ZANR(id, naziv) VALUES(1, 'Novela');
 INSERT INTO ZANR(id, naziv) VALUES(2, 'Roman');
 INSERT INTO ZANR(id, naziv) VALUES(3, 'Strucna knjiga');
 
-
-INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(1,'978-3-16-148410-0', 1000,'2.2.2020.','Ana Karenjina',10,'Zanimljivo', 1, 1, 1);
-INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(2,'978-3-16-148410-1',200,'3.3.2019.','Bela griva', 6, 'Onako',2, 2, 2);
-INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(3,'978-3-16-148410-2',300,'4.4.2017', 'Bele klizaljke', 9,'Odlicna knjiga',2, 2, 3);
-INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(4,'978-3-16-148410-3',400,'5.5.2020','Osnove finansijskog inzenjeringa 1',8,'Super',3,1,4);
-
-
-
-
-
 INSERT INTO POLICA(id ,naziv ,primarna) VALUES(1, 'polica 1',true);
 INSERT INTO POLICA(id ,naziv ,primarna) VALUES(2, 'polica 2',false);
-
 
 INSERT INTO STAVKA_POLICE(id, polica_id) VALUES(1,1);
 INSERT INTO STAVKA_POLICE(id, polica_id) VALUES(2,1);
 INSERT INTO STAVKA_POLICE(id, polica_id) VALUES(3,2);
+
+INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(1,'978-3-16-148410-0', 1000,'2.2.2020.','Ana Karenjina','',10,'Zanimljivo', 1, 1, 1);
+INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(2,'978-3-16-148410-1',200,'3.3.2019.','Bela griva','', 6, 'Onako',2, 2, 2);
+INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(3,'978-3-16-148410-2',300,'4.4.2017', 'Bele klizaljke','', 9,'Odlicna knjiga',2, 2, 3);
+INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(4,'978-3-16-148410-3',400,'5.5.2020','Osnove finansijskog inzenjeringa 1','',8,'Super',3,1,3);
+
 
 INSERT INTO RECENZIJA(id,datum_Recenzije, ocena, tekst, korisnik_id, stavka_police_id) VALUES(1,'1.1.2023.',10,'Odlicna knjiga',1,1);
 INSERT INTO RECENZIJA(id,datum_Recenzije, ocena, tekst, korisnik_id, stavka_police_id) VALUES(2,'2.2.2023.',9,'Dobra knjiga',1,2);
