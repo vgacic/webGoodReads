@@ -1,15 +1,14 @@
 package com.tim22.web.entity;
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.*;
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name="Korisnik")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Korisnik implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
 
     @Column
