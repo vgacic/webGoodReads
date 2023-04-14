@@ -15,8 +15,9 @@ public class Autor extends Korisnik implements Serializable {
     @Column
     private boolean aktivan;
 
+    //ne valja
     @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Knjiga> SpisakKnjiga = new HashSet<>();
+    private Set<Knjiga> knjiga = new HashSet<>();
 
 
 

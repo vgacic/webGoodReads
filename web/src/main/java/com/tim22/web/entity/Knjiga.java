@@ -13,10 +13,10 @@ public class Knjiga implements Serializable {
     private String naslovnaFotografija;
 
     @Column(unique = true)
-    private int ISBN;
+    private String ISBN;
 
     @Column
-    private Date datumObjavljivanja;
+    private String datumObjavljivanja;
 
     @Column
     private int brojStrana;
@@ -51,19 +51,19 @@ public class Knjiga implements Serializable {
         this.naslovnaFotografija = naslovnaFotografija;
     }
 
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
-    public Date getDatumObjavljivanja() {
+    public String getDatumObjavljivanja() {
         return datumObjavljivanja;
     }
 
-    public void setDatumObjavljivanja(Date datumObjavljivanja) {
+    public void setDatumObjavljivanja(String datumObjavljivanja) {
         this.datumObjavljivanja = datumObjavljivanja;
     }
 

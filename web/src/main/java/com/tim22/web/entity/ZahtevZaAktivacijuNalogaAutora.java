@@ -1,8 +1,5 @@
 package com.tim22.web.entity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.*;
@@ -19,8 +16,9 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
 
     private String poruka;
 
-    private Date datum;
+    private String datum;
 
+    @Enumerated(EnumType.STRING)
     private status stanje;
 
 
@@ -60,11 +58,11 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
         this.poruka = poruka;
     }
 
-    public Date getDatum() {
+    public String getDatum() {
         return datum;
     }
 
-    public void setDatum(Date datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
     }
 }

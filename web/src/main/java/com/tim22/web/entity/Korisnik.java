@@ -19,12 +19,12 @@ public class Korisnik implements Serializable {
     @Column(unique = true)
     protected String korisnickoIme;
     @Column(unique = true)
-    protected String mail;
+    protected String email;
     @Column
     protected String lozinka;
 
     @Column
-    protected Date datumRodjenja;
+    protected String datumRodjenja;
 
     @Column
     protected String profilnaSlika; //string zbog putanje do slike?
@@ -66,11 +66,11 @@ public class Korisnik implements Serializable {
     }
 
     public String getMail() {
-        return mail;
+        return email;
     }
 
     public void setMail(String mail) {
-        this.mail = mail;
+        this.email = mail;
     }
 
     public String getLozinka() {
@@ -81,11 +81,11 @@ public class Korisnik implements Serializable {
         this.lozinka = lozinka;
     }
 
-    public Date getDatumRodjenja() {
+    public String getDatumRodjenja() {
         return datumRodjenja;
     }
 
-    public void setDatumRodjenja(Date datumRodjenja) {
+    public void setDatumRodjenja(String datumRodjenja) {
         this.datumRodjenja = datumRodjenja;
     }
 

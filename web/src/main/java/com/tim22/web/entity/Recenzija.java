@@ -12,13 +12,14 @@ public class Recenzija implements Serializable {
     private int ocena;
     private String tekst;
 
-    private Date datumRecenzije;
+    private String datumRecenzije;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "korisnik_id", referencedColumnName = "id")
     private Korisnik korisnik;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "stavkaPolice_id")
     private StavkaPolice stavkaPolice;
 
 
@@ -38,11 +39,11 @@ public class Recenzija implements Serializable {
         this.tekst = tekst;
     }
 
-    public Date getDatumRecenzije() {
+    public String getDatumRecenzije() {
         return datumRecenzije;
     }
 
-    public void setDatumRecenzije(Date datumRecenzije) {
+    public void setDatumRecenzije(String datumRecenzije) {
         this.datumRecenzije = datumRecenzije;
     }
 }
