@@ -24,7 +24,7 @@ public class Korisnik implements Serializable {
     protected String lozinka;
 
     @Column
-    protected String datumRodjenja;
+    protected Date datumRodjenja;
 
     @Column
     protected String profilnaSlika; //string zbog putanje do slike?
@@ -81,11 +81,11 @@ public class Korisnik implements Serializable {
         this.lozinka = lozinka;
     }
 
-    public String getDatumRodjenja() {
+    public Date getDatumRodjenja() {
         return datumRodjenja;
     }
 
-    public void setDatumRodjenja(String datumRodjenja) {
+    public void setDatumRodjenja(Date datumRodjenja) {
         this.datumRodjenja = datumRodjenja;
     }
 

@@ -16,7 +16,7 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
 
     private String poruka;
 
-    private String datum;
+    private Date datum;
 
     @Enumerated(EnumType.STRING)
     private status stanje;
@@ -58,11 +58,11 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
         this.poruka = poruka;
     }
 
-    public String getDatum() {
+    public Date getDatum() {
         return datum;
     }
 
-    public void setDatum(String datum) {
+    public void setDatum(Date datum) {
         this.datum = datum;
     }
 }

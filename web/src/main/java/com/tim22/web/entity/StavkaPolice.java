@@ -16,8 +16,8 @@ public class StavkaPolice implements Serializable {
     private Polica polica;
 
     //ne valja
-    @OneToMany(mappedBy = "stavkaPolice",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Knjiga> knjige = new HashSet<>();
+    @OneToOne(mappedBy = "stavkaPolice")
+    private Knjiga knjiga;
 
     //ne valja
     @OneToMany(mappedBy = "stavkaPolice",fetch = FetchType.LAZY, cascade = CascadeType.ALL)

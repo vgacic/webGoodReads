@@ -12,10 +12,10 @@ public class Recenzija implements Serializable {
     private int ocena;
     private String tekst;
 
-    private String datumRecenzije;
+    private Date datumRecenzije;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "korisnik_id", referencedColumnName = "id")
+    @JoinColumn(name = "korisnik_id")
     private Korisnik korisnik;
 
     @ManyToOne
@@ -39,11 +39,11 @@ public class Recenzija implements Serializable {
         this.tekst = tekst;
     }
 
-    public String getDatumRecenzije() {
+    public Date getDatumRecenzije() {
         return datumRecenzije;
     }
 
-    public void setDatumRecenzije(String datumRecenzije) {
+    public void setDatumRecenzije(Date datumRecenzije) {
         this.datumRecenzije = datumRecenzije;
     }
 }

@@ -16,25 +16,26 @@ public class Knjiga implements Serializable {
     private String ISBN;
 
     @Column
-    private String datumObjavljivanja;
+    private Date datumObjavljivanja;
 
     @Column
     private int brojStrana;
     @Column
     private String opis;
-    @Column
 
-    private String zanr;
     @Column
     private double ocena;
 
-   @ManyToOne
-   @JoinColumn(name = "stavka_police_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "stavkaPolice_id", referencedColumnName = "id")
    private StavkaPolice stavkaPolice;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Autor autor;
 
+
+    @OneToOne(mappedBy = "knjiga")
+    private Zanr zanr;
 
     public String getNaslov() {
         return naslov;
@@ -60,11 +61,11 @@ public class Knjiga implements Serializable {
         this.ISBN = ISBN;
     }
 
-    public String getDatumObjavljivanja() {
+    public Date getDatumObjavljivanja() {
         return datumObjavljivanja;
     }
 
-    public void setDatumObjavljivanja(String datumObjavljivanja) {
+    public void setDatumObjavljivanja(Date datumObjavljivanja) {
         this.datumObjavljivanja = datumObjavljivanja;
     }
 
@@ -84,13 +85,6 @@ public class Knjiga implements Serializable {
         this.opis = opis;
     }
 
-    public String getZanr() {
-        return zanr;
-    }
-
-    public void setZanr(String zanr) {
-        this.zanr = zanr;
-    }
 
     public double getOcena() {
         return ocena;
@@ -99,4 +93,6 @@ public class Knjiga implements Serializable {
     public void setOcena(double ocena) {
         this.ocena = ocena;
     }
+
+
 }
