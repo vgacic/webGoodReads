@@ -19,10 +19,10 @@ INSERT INTO STAVKA_POLICE(id, polica_id) VALUES(1,1);
 INSERT INTO STAVKA_POLICE(id, polica_id) VALUES(2,1);
 INSERT INTO STAVKA_POLICE(id, polica_id) VALUES(3,2);
 
-INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(1,'978-3-16-148410-0', 1000,'2020-2-2','Ana Karenjina','',10,'Zanimljivo', 1, 1, 1);
-INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(2,'978-3-16-148410-1',200,'2019-3-3','Bela griva','', 6, 'Onako',2, 2, 2);
-INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(3,'978-3-16-148410-2',300,'2017-4-4', 'Bele klizaljke','', 9,'Odlicna knjiga',2, 2, 3);
-INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, zanr, autor_id, stavka_police_id) VALUES(4,'978-3-16-148410-3',400,'2020-5-5','Osnove finansijskog inzenjeringa 1','',8,'Super',3,1,3);
+INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, autor_id, stavka_police_id) VALUES(1,'978-3-16-148410-0', 1000,'2020-2-2','Ana Karenjina','',10,'Zanimljivo',1, 1);
+INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, autor_id, stavka_police_id) VALUES(2,'978-3-16-148410-1',200,'2019-3-3','Bela griva','', 6, 'Onako',2, 2);
+INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, autor_id, stavka_police_id) VALUES(3,'978-3-16-148410-2',300,'2017-4-4', 'Bele klizaljke','', 9,'Odlicna knjiga',2, 3);
+INSERT INTO KNJIGA(id, ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, autor_id, stavka_police_id) VALUES(4,'978-3-16-148410-3',400,'2020-5-5','Osnove finansijskog inzenjeringa 1','',8,'Super',1,3);
 
 
 INSERT INTO RECENZIJA(id,datum_Recenzije, ocena, tekst, korisnik_id, stavka_police_id) VALUES(1,'2023-1-1',10,'Odlicna knjiga',1,1);

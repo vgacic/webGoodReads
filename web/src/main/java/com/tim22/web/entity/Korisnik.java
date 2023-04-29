@@ -38,7 +38,7 @@ public class Korisnik implements Serializable {
     @OneToOne(mappedBy = "korisnik")
     protected Recenzija recenzija;
 
-    //nisam sigurna da li nam trebaju seteri za mail i korisnicko ime jer su jedinstveni????
+
 
 
     public String getIme() {

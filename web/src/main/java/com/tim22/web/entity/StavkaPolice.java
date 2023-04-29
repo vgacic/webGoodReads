@@ -9,17 +9,13 @@ public class StavkaPolice implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //dodati objekat klase Recenzija
-
 
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Polica polica;
 
-    //ne valja
     @OneToOne(mappedBy = "stavkaPolice")
     private Knjiga knjiga;
 
-    //ne valja
     @OneToMany(mappedBy = "stavkaPolice",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Recenzija> recenzije= new HashSet<>();
 
