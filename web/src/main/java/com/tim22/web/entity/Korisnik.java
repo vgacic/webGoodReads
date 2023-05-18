@@ -114,4 +114,7 @@ public class Korisnik implements Serializable {
     }
 
 
+    public String getPassword() {
+        return lozinka;
+    }
 }
