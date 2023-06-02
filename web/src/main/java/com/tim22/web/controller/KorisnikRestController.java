@@ -8,10 +8,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,20 +20,19 @@ public class KorisnikRestController {
     @PostMapping("api/login")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto, HttpSession session)
     {
-        if(loginDto.getUsername().isEmpty() || loginDto.getPassword().isEmpty())
+        if(loginDto.getEmail().isEmpty() || loginDto.getLozinka().isEmpty())
             return new ResponseEntity("Invalid login data", HttpStatus.BAD_REQUEST);
-        Korisnik loggedKorisnik=korisnikService.login(loginDto.getUsername(), loginDto.getPassword());
+        Korisnik loggedKorisnik=korisnikService.login(loginDto.getEmail(), loginDto.getLozinka());
         if(loggedKorisnik==null){
             return new ResponseEntity<>("User does not exist!", HttpStatus.NOT_FOUND);
         }
-
-        session.setAttribute("employee", loggedKorisnik);
+        session.setAttribute("korisnik", loggedKorisnik);
         return ResponseEntity.ok("Successfully logged in!");
     }
 
     @PostMapping("api/logout")
     public ResponseEntity Logout(HttpSession session){
-        Korisnik loggedEmployee = (Korisnik) session.getAttribute("employee");
+        Korisnik loggedEmployee = (Korisnik) session.getAttribute("korisnik");
 
         if (loggedEmployee == null)
             return new ResponseEntity("Forbidden", HttpStatus.FORBIDDEN);
@@ -46,31 +42,36 @@ public class KorisnikRestController {
     }
 
 
+    @GetMapping("/api/korisnik")
+    public ResponseEntity<Korisnik> getKorisnik(@RequestParam Long id){
+
+        Korisnik korisnik = korisnikService.findOne(id);
+        if(korisnik!=null)
+        {
+            return  ResponseEntity.ok(korisnik);
+        }
+        return new ResponseEntity("Nije nadjen korisnik", HttpStatus.NOT_FOUND);
+
+    }
 
 
     @GetMapping("/api/korisnici")
-    public ResponseEntity<List<KorisnikDto>> getKorisnik(HttpSession session){
+    public ResponseEntity<List<KorisnikDto>> getKorisnici(HttpSession session){
         List<Korisnik> korisnikList = korisnikService.findAll();
 
         Korisnik loggedKorisnik = (Korisnik) session.getAttribute("korisnik");
         if(loggedKorisnik == null) {
             System.out.println("Nema sesije");
         } else {
-            System.out.println(loggedKorisnik);
+            System.out.println(loggedKorisnik.getIme());
         }
 
         List<KorisnikDto> dtos = new ArrayList<>();
-        for(Korisnik korisnik : korisnikList){
+        for(Korisnik korisnik : korisnikList){ //korisnik->dto da ne bi sslali sve podatke
             KorisnikDto dto = new KorisnikDto(korisnik);
             dtos.add(dto);
         }
         return ResponseEntity.ok(dtos);
-    }
-
-    @PostMapping("/api/save-korisnik")
-    public String saveKorisnik(@RequestBody Korisnik korisnik) {
-        this.korisnikService.save(korisnik);
-        return "Successfully saved an korisnik!";
     }
 
 }

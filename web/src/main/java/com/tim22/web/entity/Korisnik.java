@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 @Entity
 @Table(name="Korisnik")
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Korisnik implements Serializable {
 
     @Id
@@ -34,11 +34,6 @@ public class Korisnik implements Serializable {
 
     @Column
     protected String uloga; //citalac, autor, administraror
-
-    @OneToOne(mappedBy = "korisnik")
-    protected Recenzija recenzija;
-
-
 
 
     public String getIme() {

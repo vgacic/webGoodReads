@@ -10,14 +10,34 @@ public class StavkaPolice implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private Polica polica;
-
-    @OneToOne(mappedBy = "stavkaPolice")
+    @OneToOne
     private Knjiga knjiga;
 
-    @OneToMany(mappedBy = "stavkaPolice",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "stavka_police_id")
     private Set<Recenzija> recenzije= new HashSet<>();
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Knjiga getKnjiga() {
+        return knjiga;
+    }
+
+    public void setKnjiga(Knjiga knjiga) {
+        this.knjiga = knjiga;
+    }
+
+    public Set<Recenzija> getRecenzije() {
+        return recenzije;
+    }
+
+    public void setRecenzije(Set<Recenzija> recenzije) {
+        this.recenzije = recenzije;
+    }
 }

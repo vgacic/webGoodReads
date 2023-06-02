@@ -26,15 +26,11 @@ public class Knjiga implements Serializable {
     @Column
     private double ocena;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "stavkaPolice_id", referencedColumnName = "id")
-   private StavkaPolice stavkaPolice;
-
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Autor autor;
 
 
-    @OneToOne(mappedBy = "knjiga")
+    @OneToOne
     private Zanr zanr;
 
     public String getNaslov() {
@@ -94,5 +90,27 @@ public class Knjiga implements Serializable {
         this.ocena = ocena;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public Zanr getZanr() {
+        return zanr;
+    }
+
+    public void setZanr(Zanr zanr) {
+        this.zanr = zanr;
+    }
 }

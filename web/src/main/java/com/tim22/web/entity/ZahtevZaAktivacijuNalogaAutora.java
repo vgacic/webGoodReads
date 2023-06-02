@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.*;
-enum status{NA_CEKANJU, ODOBREN, ODBIJEN};
+
 @Entity
 public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
 
@@ -19,18 +19,17 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
     private Date datum;
 
     @Enumerated(EnumType.STRING)
-    private status stanje;
-
+    private Status stanje;
 
     public Long getId() {
         return id;
     }
 
-    public status getStanje() {
+    public Status getStanje() {
         return stanje;
     }
 
-    public void setStanje(status stanje) {
+    public void setStanje(Status stanje) {
         this.stanje = stanje;
     }
 

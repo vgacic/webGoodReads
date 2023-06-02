@@ -1,11 +1,6 @@
 package com.tim22.web.entity;
-
 import jakarta.persistence.*;
-
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "Autor")
@@ -14,11 +9,6 @@ public class Autor extends Korisnik implements Serializable {
 
     @Column
     private boolean aktivan;
-
-    //ne valja
-    @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Knjiga> knjiga = new HashSet<>();
-
 
 
     public boolean isAktivan() {

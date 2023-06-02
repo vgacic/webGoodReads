@@ -18,13 +18,24 @@ public class Recenzija implements Serializable {
     @JoinColumn(name = "korisnik_id")
     private Korisnik korisnik;
 
-    @ManyToOne
-    @JoinColumn(name = "stavkaPolice_id")
-    private StavkaPolice stavkaPolice;
-
-
     public int getOcena() {
         return ocena;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Korisnik getKorisnik() {
+        return korisnik;
+    }
+
+    public void setKorisnik(Korisnik korisnik) {
+        this.korisnik = korisnik;
     }
 
     public void setOcena(int ocena) {

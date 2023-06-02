@@ -8,30 +8,22 @@ import java.util.Date;
 public class KorisnikDto {
         private String ime;
         private String prezime;
-        private String korisnickoIme;
-        private String email;
-        private String lozinka;
 
         private Date datumRodjenja;
 
         public KorisnikDto() {
             this.ime = ime;
             this.prezime = prezime;
-            this.korisnickoIme = korisnickoIme;
-            this.email = email;
+
         }
 
     public KorisnikDto(Korisnik korisnik) {
 
+            ime=korisnik.getIme();
+            prezime=korisnik.getPrezime();
+            datumRodjenja=korisnik.getDatumRodjenja();
     }
 
-    public String getLozinka() {
-        return lozinka;
-    }
-
-    public void setLozinka(String lozinka) {
-        this.lozinka = lozinka;
-    }
 
     public Date getDatumRodjenja() {
         return datumRodjenja;
@@ -57,20 +49,5 @@ public class KorisnikDto {
             this.prezime = prezime;
         }
 
-        public String getKorisnickoIme() {
-            return korisnickoIme;
-        }
-
-        public void setKorisnickoIme(String korisnickoIme) {
-            this.korisnickoIme = korisnickoIme;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email=email;
-}
     }
 
