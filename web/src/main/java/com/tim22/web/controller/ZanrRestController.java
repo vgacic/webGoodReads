@@ -2,7 +2,7 @@ package com.tim22.web.controller;
 
 import com.tim22.web.dto.KnjigaDto;
 import com.tim22.web.dto.ZanrDto;
-import com.tim22.web.entity.Knjiga;
+import com.tim22.web.entity.Korisnik;
 import com.tim22.web.entity.Zanr;
 import com.tim22.web.service.ZanrService;
 import jakarta.servlet.http.HttpSession;
@@ -31,7 +31,7 @@ public class ZanrRestController {
     }
 
     @GetMapping("api/zanr/{id}")
-    public ResponseEntity<KnjigaDto> jedna(@PathVariable Long id) {
+    public ResponseEntity<ZanrDto> jedna(@PathVariable Long id) {
         Zanr zanr = zanrService.findById(id);
         if (zanr == null) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

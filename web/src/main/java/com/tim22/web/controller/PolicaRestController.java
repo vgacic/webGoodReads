@@ -3,7 +3,7 @@ package com.tim22.web.controller;
 import com.tim22.web.dto.KnjigaDto;
 import com.tim22.web.dto.PolicaDto;
 import com.tim22.web.dto.RegisterDto;
-import com.tim22.web.entity.Knjiga;
+import com.tim22.web.entity.Korisnik;
 import com.tim22.web.entity.Polica;
 import com.tim22.web.service.PolicaService;
 import jakarta.servlet.http.HttpSession;

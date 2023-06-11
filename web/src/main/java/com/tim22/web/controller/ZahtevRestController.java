@@ -2,7 +2,7 @@ package com.tim22.web.controller;
 
 import com.tim22.web.dto.KnjigaDto;
 import com.tim22.web.dto.ZahtevZaAktivacijuNalogaAutoraDto;
-import com.tim22.web.entity.Knjiga;
+import com.tim22.web.entity.Korisnik;
 import com.tim22.web.entity.ZahtevZaAktivacijuNalogaAutora;
 import com.tim22.web.service.ZahtevService;
 import jakarta.servlet.http.HttpSession;
