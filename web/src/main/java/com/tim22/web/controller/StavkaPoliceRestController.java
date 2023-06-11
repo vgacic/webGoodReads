@@ -8,4 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class StavkaPoliceRestController {
     @Autowired
     private StavkaPoliceService stavkaPoliceService;
+
+
 }
