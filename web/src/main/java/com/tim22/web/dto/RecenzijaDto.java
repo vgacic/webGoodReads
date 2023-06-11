@@ -7,6 +7,12 @@ public class RecenzijaDto {
     private int ocena;
     private String tekst;
 
+    public RecenzijaDto(Long id, int ocena, String tekst) {
+        this.id = id;
+        this.ocena = ocena;
+        this.tekst = tekst;
+    }
+
     public RecenzijaDto(Recenzija recenzija) {
         this.id = recenzija.getId();
         this.ocena = recenzija.getOcena();

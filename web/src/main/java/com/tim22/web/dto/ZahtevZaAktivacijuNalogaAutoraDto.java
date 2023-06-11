@@ -17,8 +17,16 @@ public class ZahtevZaAktivacijuNalogaAutoraDto {
 
     private Date datum;
 
-    @ManyToOne(fetch = FetchType.EAGER)
     private Autor autor;
+
+    public ZahtevZaAktivacijuNalogaAutoraDto(Long id, String email, int telefon, String poruka, Date datum, Autor autor) {
+        this.id = id;
+        this.email = email;
+        this.telefon = telefon;
+        this.poruka = poruka;
+        this.datum = datum;
+        this.autor = autor;
+    }
 
     public ZahtevZaAktivacijuNalogaAutoraDto(ZahtevZaAktivacijuNalogaAutora zahtev) {
         this.id = zahtev.getId();

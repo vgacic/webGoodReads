@@ -6,6 +6,11 @@ public class ZanrDto {
     private Long id;
     private String naziv;
 
+    public ZanrDto(Long id, String naziv) {
+        this.id = id;
+        this.naziv = naziv;
+    }
+
     public ZanrDto(Zanr zanr)
     {
         this.id=zanr.getId();

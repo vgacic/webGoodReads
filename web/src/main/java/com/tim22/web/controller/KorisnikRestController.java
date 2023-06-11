@@ -115,7 +115,7 @@ public class KorisnikRestController {
         }
 
         List<PolicaDto> police = new ArrayList<>();
-        for (Polica polica : korisnik.getPolice()) {
+        for (Polica polica : korisnikService.findOne(korisnik.getId()).getPolice()) {
             police.add(new PolicaDto(polica));
         }
 

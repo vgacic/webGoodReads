@@ -11,6 +11,13 @@ public class KnjigaDto {
 
     private String ISBN;
 
+    public KnjigaDto(Long id, String naslov, Date datum, String ISBN) {
+        this.id = id;
+        this.naslov = naslov;
+        this.datum = datum;
+        this.ISBN = ISBN;
+    }
+
     public KnjigaDto(Knjiga knjiga) {
         this.id=knjiga.getId();
         this.naslov=knjiga.getNaslov();

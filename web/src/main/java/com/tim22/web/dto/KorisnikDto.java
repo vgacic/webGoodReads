@@ -11,11 +11,11 @@ public class KorisnikDto {
 
         private Date datumRodjenja;
 
-        public KorisnikDto() {
-            this.ime = ime;
-            this.prezime = prezime;
-
-        }
+    public KorisnikDto(String ime, String prezime, Date datumRodjenja) {
+        this.ime = ime;
+        this.prezime = prezime;
+        this.datumRodjenja = datumRodjenja;
+    }
 
     public KorisnikDto(Korisnik korisnik) {
 
