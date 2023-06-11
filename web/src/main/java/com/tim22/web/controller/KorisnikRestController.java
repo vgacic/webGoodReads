@@ -2,6 +2,7 @@ package com.tim22.web.controller;
 
 import com.tim22.web.dto.KorisnikDto;
 import com.tim22.web.dto.LoginDto;
+import com.tim22.web.dto.RegisterDto;
 import com.tim22.web.entity.Korisnik;
 import com.tim22.web.service.KorisnikService;
 import jakarta.servlet.http.HttpSession;
@@ -17,6 +18,14 @@ import java.util.List;
 public class KorisnikRestController {
     @Autowired
    private KorisnikService korisnikService;
+
+    @PostMapping("api/register")
+    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
+        if (!registerDto.getLozinka().equals(registerDto.getPonovljenaLozinka()))
+            return new ResponseEntity<>("Nije dobra lozinka", HttpStatus.BAD_REQUEST);
+        korisnikService.register(registerDto);
+        return ResponseEntity.ok("Registrovan");
+    }
     @PostMapping("api/login")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto, HttpSession session)
     {

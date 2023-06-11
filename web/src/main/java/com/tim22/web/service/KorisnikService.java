@@ -1,14 +1,13 @@
 package com.tim22.web.service;
 
+import com.tim22.web.dto.RegisterDto;
 import com.tim22.web.entity.Korisnik;
+import com.tim22.web.entity.Polica;
 import com.tim22.web.repository.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class KorisnikService {
@@ -38,10 +37,30 @@ public class KorisnikService {
         }
         return null;
     }
-   /* public Korisnik register(String ime, String prezime, String username, String password, String email, String profilnaSlika, Date datumRodjenja)
+    public Korisnik register(RegisterDto registerDto)
     {
+        Korisnik korisnik = new Korisnik();
+        korisnik.setIme(registerDto.getIme());
+        korisnik.setPrezime(registerDto.getPrezime());
+        korisnik.setEmail(registerDto.getEmail());
+        korisnik.setKorisnickoIme(registerDto.getKorisnickoIme());
+        korisnik.setLozinka(registerDto.getLozinka());
 
-        return null;
-    }*/
+        Set<Polica> police = new HashSet<>();
+        Polica polica = new Polica();
+        polica.setPrimarna(true);
+        polica.setNaziv("Read");
+        police.add(polica);
+        polica = new Polica();
+        polica.setPrimarna(true);
+        polica.setNaziv("Want To Read");
+        police.add(polica);
+        polica = new Polica();
+        polica.setPrimarna(true);
+        polica.setNaziv("Currently Reading");
+        police.add(polica);
+        korisnik.setPolice(police);
+        return korisnikRepository.save(korisnik);
+    }
 
 }

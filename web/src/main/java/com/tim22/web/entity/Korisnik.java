@@ -35,6 +35,10 @@ public class Korisnik implements Serializable {
     @Column
     protected String uloga; //citalac, autor, administraror
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "korisnik_id")
+    protected Set<Polica> police = new HashSet<>();
+
 
     public String getIme() {
         return ime;
@@ -111,5 +115,29 @@ public class Korisnik implements Serializable {
 
     public String getPassword() {
         return lozinka;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Set<Polica> getPolice() {
+        return police;
+    }
+
+    public void setPolice(Set<Polica> police) {
+        this.police = police;
     }
 }
