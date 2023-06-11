@@ -1,5 +1,6 @@
 package com.tim22.web.service;
 
+import com.tim22.web.dto.KnjigaDto;
 import com.tim22.web.entity.Knjiga;
 import com.tim22.web.repository.KnjigaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,9 @@ public class KnjigaService {
     public void save(KnjigaDto knjigaDto) {
         Knjiga knjiga = new Knjiga();
         // napravi dto i postavi sve u knjizi iz dto
-        // knjiga.setNaslov(knjigaDto.getNaslov());
-        // ...
+        knjiga.setNaslov(knjigaDto.getNaslov());
+        knjiga.setDatumObjavljivanja(knjigaDto.getDatum());
+        knjiga.setISBN(knjigaDto.getISBN());
         knjigaRepository.save(knjiga);
     }
 

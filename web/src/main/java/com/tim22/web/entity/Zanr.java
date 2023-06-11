@@ -19,4 +19,13 @@ public class Zanr implements Serializable {
     public void setNaziv(String naziv) {
         this.naziv = naziv;
     }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
