@@ -1,8 +1,10 @@
 package com.tim22.web.service;
 
 import com.tim22.web.dto.RegisterDto;
+import com.tim22.web.entity.Autor;
 import com.tim22.web.entity.Korisnik;
 import com.tim22.web.entity.Polica;
+import com.tim22.web.repository.AutorRepository;
 import com.tim22.web.repository.KorisnikRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,10 @@ import java.util.*;
 public class KorisnikService {
     @Autowired
     private KorisnikRepository korisnikRepository;
+    @Autowired
+    private AutorRepository autorRepository;
+    @Autowired
+    private KnjigaService knjigaService;
 
 
     public Korisnik findOne(Long id){
@@ -63,4 +69,22 @@ public class KorisnikService {
         return korisnikRepository.save(korisnik);
     }
 
+    public void aktivirajAutora(Autor autor, String email, String lozinka) {
+        autor.setEmail(email);
+        autor.setLozinka(lozinka);
+        autor.setAktivan(true);
+        autorRepository.save(autor);
+    }
+
+    public void delete(Long id) {
+        Korisnik korisnik = findOne(id);
+
+        if (korisnik.getUloga().equals("autor")) {
+            if (!knjigaService.findAllByAutorId(korisnik.getId()).isEmpty())
+                return;
+            autorRepository.delete((Autor) korisnik);
+        }
+
+        korisnikRepository.delete(korisnik);
+    }
 }

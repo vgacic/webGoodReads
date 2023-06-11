@@ -21,6 +21,13 @@ public class ZanrService {
             return zanr.get();
         return null;
     }
+
+    public Zanr findByNaziv(String naziv) {
+        Optional<Zanr> zanr = zanrRepository.findByNaziv(naziv);
+        if (zanr.isPresent())
+            return zanr.get();
+        return null;
+    }
     public List<Zanr> findAll() {
         return zanrRepository.findAll();
     }

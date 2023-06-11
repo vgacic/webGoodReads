@@ -2,6 +2,7 @@ package com.tim22.web.service;
 
 import com.tim22.web.dto.ZahtevZaAktivacijuNalogaAutoraDto;
 import com.tim22.web.entity.Knjiga;
+import com.tim22.web.entity.Status;
 import com.tim22.web.entity.ZahtevZaAktivacijuNalogaAutora;
 import com.tim22.web.repository.ZahtevZaAktivacijuNalogaAutoraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class ZahtevService {
     @Autowired
     private ZahtevZaAktivacijuNalogaAutoraRepository zahtevRepository;
+    @Autowired
+    private KorisnikService korisnikService;
+
     public ZahtevZaAktivacijuNalogaAutora findById(Long id) {
         Optional<ZahtevZaAktivacijuNalogaAutora> zahtev = zahtevRepository.findById(id);
         if (zahtev.isPresent())
@@ -33,8 +37,17 @@ public class ZahtevService {
         zahtev.setTelefon(zahtevZaAktivacijuNalogaAutoraDto.getTelefon());
         zahtevRepository.save(zahtev);
     }
-    public void delete(Long id) {
-        zahtevRepository.deleteById(id);
+
+    public void obradi(Long id, Boolean prihvati) {
+        ZahtevZaAktivacijuNalogaAutora zahtev = findById(id);
+        if (prihvati) {
+            zahtev.setStanje(Status.ODOBREN);
+            korisnikService.aktivirajAutora(zahtev.getAutor(), zahtev.getEmail(), "lozinka");
+        } else {
+            zahtev.setStanje(Status.ODBIJEN);
+        }
+
+        zahtevRepository.save(zahtev);
     }
 
 }

@@ -21,6 +21,9 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
     @Enumerated(EnumType.STRING)
     private Status stanje;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Autor autor;
+
     public Long getId() {
         return id;
     }
@@ -63,5 +66,13 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
 
     public void setDatum(Date datum) {
         this.datum = datum;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 }

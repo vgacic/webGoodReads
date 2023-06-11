@@ -2,8 +2,10 @@ package com.tim22.web.controller;
 
 import com.tim22.web.dto.KorisnikDto;
 import com.tim22.web.dto.LoginDto;
+import com.tim22.web.dto.PolicaDto;
 import com.tim22.web.dto.RegisterDto;
 import com.tim22.web.entity.Korisnik;
+import com.tim22.web.entity.Polica;
 import com.tim22.web.service.KorisnikService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,4 +85,40 @@ public class KorisnikRestController {
         return ResponseEntity.ok(dtos);
     }
 
+    @DeleteMapping("api/korisnik/{id}")
+    public ResponseEntity<String> obrisi(@PathVariable(required = false) Long id, HttpSession session) {
+        Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
+
+        if (korisnik == null) {
+            return new ResponseEntity<>("Niste prijavljeni", HttpStatus.FORBIDDEN);
+        }
+
+        // Korisnik brise sam sebe
+        if (id == null && !korisnik.getUloga().equals("administrator")) {
+            korisnikService.delete(korisnik.getId());
+            return ResponseEntity.ok("Obrisan korisnik");
+        } else if (id != null && korisnik.getUloga().equals("administrator")) {
+            korisnikService.delete(id);
+            // Autor ne moze da se obrise ako ima knjiga ali se i dalje ispise ovo
+            return ResponseEntity.ok("Obrisan korisnik, mozda?");
+        } else {
+            return new ResponseEntity<>("Ne mozete a brisete druge korisnike", HttpStatus.FORBIDDEN);
+        }
+    }
+
+    @GetMapping("api/police-prijavljenog")
+    public ResponseEntity<List<PolicaDto>> policePrijavljenog(HttpSession session) {
+        Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
+
+        if (korisnik == null) {
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+        List<PolicaDto> police = new ArrayList<>();
+        for (Polica polica : korisnik.getPolice()) {
+            police.add(new PolicaDto(polica));
+        }
+
+        return ResponseEntity.ok(police);
+    }
 }

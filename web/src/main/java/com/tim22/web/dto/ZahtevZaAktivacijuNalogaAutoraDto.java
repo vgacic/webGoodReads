@@ -1,6 +1,9 @@
 package com.tim22.web.dto;
 
+import com.tim22.web.entity.Autor;
 import com.tim22.web.entity.ZahtevZaAktivacijuNalogaAutora;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 
 import java.util.Date;
 
@@ -14,12 +17,16 @@ public class ZahtevZaAktivacijuNalogaAutoraDto {
 
     private Date datum;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Autor autor;
+
     public ZahtevZaAktivacijuNalogaAutoraDto(ZahtevZaAktivacijuNalogaAutora zahtev) {
         this.id = zahtev.getId();
         this.email = zahtev.getEmail();
         this.telefon = zahtev.getTelefon();
         this.poruka = zahtev.getPoruka();
         this.datum = zahtev.getDatum();
+        this.autor = zahtev.getAutor();
     }
 
     public Long getId() {
@@ -60,5 +67,13 @@ public class ZahtevZaAktivacijuNalogaAutoraDto {
 
     public void setDatum(Date datum) {
         this.datum = datum;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
     }
 }

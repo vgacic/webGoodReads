@@ -26,7 +26,7 @@ public class Knjiga implements Serializable {
     @Column
     private double ocena;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Autor autor;
 
 

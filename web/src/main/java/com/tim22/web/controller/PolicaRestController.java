@@ -68,7 +68,7 @@ public class PolicaRestController {
             return new ResponseEntity<>("Nepostoji polica", HttpStatus.BAD_REQUEST);
         }
 
-      policaService.delete(id);
+        policaService.delete(id);
         return ResponseEntity.ok("Obrisana");
     }
 

@@ -14,7 +14,7 @@ public class Recenzija implements Serializable {
 
     private Date datumRecenzije;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "korisnik_id")
     private Korisnik korisnik;
 

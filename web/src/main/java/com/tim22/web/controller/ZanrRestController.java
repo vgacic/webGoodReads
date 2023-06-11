@@ -47,6 +47,10 @@ public class ZanrRestController {
             return new ResponseEntity<>("Niste prijavljeni", HttpStatus.BAD_REQUEST);
         }
 
+        if (zanrService.findByNaziv(zanrDto.getNaziv()) != null) {
+            return new ResponseEntity<>("Vec postoji zanr", HttpStatus.BAD_REQUEST);
+        }
+
         zanrService.save(zanrDto);
         return ResponseEntity.ok("Dodat zanr");
     }

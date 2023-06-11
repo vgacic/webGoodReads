@@ -1,7 +1,7 @@
-INSERT INTO KORISNIK(id, datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES(1, '1995-1-1', 'Marko', 'mmarkovic','marko123','marko@gmail.com','radnik','Markovic','slika.jpg','citalac');
+INSERT INTO KORISNIK(id, datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES(1, '1995-1-1', 'Marko', 'mmarkovic','marko123','marko@gmail.com','radnik','Markovic','slika.jpg','autor');
 INSERT INTO KORISNIK(id, datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES(2, '1996-2-2', 'Sara', 'ssaric','sara123','sara@uns.ac.rs','nastavnik','Saric','slika123.jpg','autor');
 INSERT INTO KORISNIK(id, datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES(3, '1997-3-3', 'Mirko', 'mmirko','mirko123','mirko@gmail.com','zaposleni','Mikic','slika122.jpg','administrator');
-INSERT INTO KORISNIK(id, datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES(4, '1998-4-4', 'Lana', 'llana','lana123','lana@uns.ac.rs','student','Peric','slika111.jpg','autor');
+INSERT INTO KORISNIK(id, datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES(4, '1998-4-4', 'Lana', 'llana','lana123','lana@uns.ac.rs','student','Peric','slika111.jpg','citalac');
 
 
 INSERT INTO AUTOR(id,aktivan) VALUES(1,true);

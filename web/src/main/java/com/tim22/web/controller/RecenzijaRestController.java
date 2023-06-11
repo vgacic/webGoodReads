@@ -5,7 +5,9 @@ import com.tim22.web.dto.RecenzijaDto;
 import com.tim22.web.entity.Korisnik;
 import com.tim22.web.entity.Polica;
 import com.tim22.web.entity.Recenzija;
+import com.tim22.web.entity.StavkaPolice;
 import com.tim22.web.service.RecenzijaService;
+import com.tim22.web.service.StavkaPoliceService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,6 +21,8 @@ import java.util.List;
 public class RecenzijaRestController {
     @Autowired
     private RecenzijaService recenzijaService;
+    @Autowired
+    private StavkaPoliceService stavkaPoliceService;
 
     @GetMapping("api/recenzije")
     public ResponseEntity<List<RecenzijaDto>> findAll() {
@@ -70,5 +74,16 @@ public class RecenzijaRestController {
 
         recenzijaService.delete(id);
         return ResponseEntity.ok("Obrisana");
+    }
+
+    @GetMapping("api/recenzije-knjige/{id}")
+    public ResponseEntity<List<RecenzijaDto>> recenzijeKnjige(@PathVariable Long id) {
+        List<RecenzijaDto> recenzije = new ArrayList<>();
+        for (StavkaPolice stavkaPolice : stavkaPoliceService.findAllByKnjigaId(id))
+            for (Recenzija recenzija : stavkaPolice.getRecenzije())
+                if (recenzija != null)
+                    recenzije.add(new RecenzijaDto(recenzija));
+
+        return ResponseEntity.ok(recenzije);
     }
 }
