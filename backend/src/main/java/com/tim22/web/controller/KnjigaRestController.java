@@ -72,7 +72,7 @@ public class KnjigaRestController {
         return ResponseEntity.ok(new KnjigaDto(knjiga));
     }
 
-    @PostMapping("api/knjiga")
+    /*@PostMapping("api/knjiga")
     public ResponseEntity<String> dodaj(@RequestBody KnjigaDto knjigaDto, HttpSession session) {
         Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
 
@@ -82,7 +82,7 @@ public class KnjigaRestController {
 
         knjigaService.save(knjigaDto);
         return ResponseEntity.ok("Dodana knjiga");
-    }
+    }*/
 
     @DeleteMapping("api/knjiga/{id}")
     public ResponseEntity<String> obrisi(@PathVariable Long id, HttpSession session) {
@@ -120,7 +120,7 @@ public class KnjigaRestController {
     }
 
 
-    @PostMapping("/api/autor/dodajKnjige")
+    @PostMapping("/api/autor/dodajKnjige") //radi
     public ResponseEntity<String> napraviKnjigu(@RequestBody KnjigaDto knjigaDto, HttpSession session) {
         Korisnik loggedKorisnik = (Korisnik) session.getAttribute("korisnik");
         Long userId = loggedKorisnik.getId();

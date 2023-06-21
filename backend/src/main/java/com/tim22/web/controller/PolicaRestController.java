@@ -35,7 +35,7 @@ public class PolicaRestController {
 
         return ResponseEntity.ok(dtos);
     }
-    @GetMapping("api/polica/{id}")
+    @GetMapping("/api/polica/{id}")
     public ResponseEntity<PolicaDto> jedna(@PathVariable Long id) {
         Polica polica = policaService.findById(id);
         if (polica == null) {
@@ -47,7 +47,7 @@ public class PolicaRestController {
     }
 
 
-    @PostMapping("api/dodajPolicu") //dodaj jednu policu
+    @PostMapping("api/dodajPolicu") //ne radi
     public ResponseEntity<String> dodajPolice(@RequestBody PolicaDto policaDto, HttpSession session) {
         Korisnik loggedKorisnik=(Korisnik) session.getAttribute("korisnik");
         Long userId=loggedKorisnik.getId();
@@ -72,7 +72,7 @@ public class PolicaRestController {
         return ResponseEntity.ok("Polica je dodata.");
     }
 
-    @DeleteMapping("api/obrisiPolicu/{id}") //obrisi policu po idju
+    @DeleteMapping("api/obrisiPolicu/{id}") //ne radi
     public ResponseEntity<String> obrisi(@PathVariable Long id, HttpSession session) {
         Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
 
@@ -91,7 +91,7 @@ public class PolicaRestController {
     }
 
 
-    @GetMapping("/api/getPolice/{korisnikId}")
+    @GetMapping("/api/getPolice/{korisnikId}") //server eror
     public ResponseEntity<List<PolicaDto>> getKorisnikovePolice(HttpSession session,@PathVariable Long korisnikId)
     {
         Korisnik k =korisnikService.findById(korisnikId);
@@ -105,7 +105,7 @@ public class PolicaRestController {
         return ResponseEntity.ok(dtos);
     }
 
-    @DeleteMapping("/api/citalac/polica/{policaId}/knjiga/{knjigaId}")
+    @DeleteMapping("/api/citalac/polica/{policaId}/knjiga/{knjigaId}") //ne radi
     public ResponseEntity<String> deleteKnjigaCitalac(@PathVariable Long policaId, @PathVariable Long knjigaId, HttpSession session)
     {
         Korisnik loggedKorisnik=(Korisnik) session.getAttribute("korisnik");
@@ -115,7 +115,7 @@ public class PolicaRestController {
             return  new ResponseEntity<>("Knjiga uspesno obrisana.",HttpStatus.OK);
         }
         else {
-            return new ResponseEntity<>("Nisi administrator ne mozes obrisati knjigu od citaoca.",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Nisi administrator ne mozes obrisati knjigu od citaoca.",HttpStatus.FORBIDDEN); //u ovo udje
         }
     }
 
