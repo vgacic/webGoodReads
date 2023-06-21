@@ -1,14 +1,18 @@
 <template>
     <div>
-      <!-- Login form -->
-      <form @submit="login">
-        <label for="email">Email:</label>
-        <input type="email" id="email" v-model="email" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" v-model="password" required>
-  
-        <button type="submit">Log In</button>
+      <h2>Login</h2>
+      <form @submit.prevent="login">
+        <div>
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email" required>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" v-model="password" required>
+        </div>
+        <div>
+          <button type="submit">Log In</button>
+        </div>
       </form>
     </div>
   </template>
@@ -24,32 +28,34 @@ export default {
   },
   methods: {
     login() {
-      // Implement your login logic here
-      // Access the email and password through `this.email` and `this.password`
-      // You can make an API call to authenticate the user, handle validation, etc.
+      
+      console.log('Email:', this.email);
+      console.log('Password:', this.password);
+      
+      
     }
   }
 };
 </script>
 
 <style scoped>
-/* Add your component-specific styles here */
+h2 {
+  text-align: center;
+}
 form {
-  display: flex;
-  flex-direction: column;
   max-width: 300px;
   margin: 0 auto;
 }
-
-label {
-  margin-bottom: 0.5rem;
-}
-
-input {
-  padding: 0.5rem;
+div {
   margin-bottom: 1rem;
 }
-
+label {
+  display: block;
+}
+input {
+  width: 100%;
+  padding: 0.5rem;
+}
 button {
   padding: 0.5rem 1rem;
 }
