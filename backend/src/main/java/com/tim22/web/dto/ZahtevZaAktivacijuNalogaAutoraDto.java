@@ -1,7 +1,10 @@
 package com.tim22.web.dto;
 
 import com.tim22.web.entity.Autor;
+import com.tim22.web.entity.Status;
 import com.tim22.web.entity.ZahtevZaAktivacijuNalogaAutora;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
 
@@ -19,6 +22,17 @@ public class ZahtevZaAktivacijuNalogaAutoraDto {
 
     private Autor autor;
 
+    @Enumerated(EnumType.STRING)
+    private Status stanje;
+
+    public Status getStanje() {
+        return stanje;
+    }
+
+    public void setStanje(Status stanje) {
+        this.stanje = stanje;
+    }
+
     public ZahtevZaAktivacijuNalogaAutoraDto(Long id, String email, int telefon, String poruka, Date datum, Autor autor) {
         this.id = id;
         this.email = email;
@@ -35,6 +49,9 @@ public class ZahtevZaAktivacijuNalogaAutoraDto {
         this.poruka = zahtev.getPoruka();
         this.datum = zahtev.getDatum();
         this.autor = zahtev.getAutor();
+    }
+
+    public ZahtevZaAktivacijuNalogaAutoraDto(String email, int telefon, String poruka, Status stanje) {
     }
 
     public Long getId() {

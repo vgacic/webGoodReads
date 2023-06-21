@@ -24,6 +24,18 @@ public class ZahtevZaAktivacijuNalogaAutora implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     private Autor autor;
 
+    public ZahtevZaAktivacijuNalogaAutora(Date datum,String email,String poruka, int telefon,Autor autor ,Status stanje) {
+        this.email = email;
+        this.telefon = telefon;
+        this.poruka = poruka;
+        this.datum = datum;
+        this.stanje = stanje;
+        this.autor = autor;
+    }
+
+    public ZahtevZaAktivacijuNalogaAutora() {
+    }
+
     public Long getId() {
         return id;
     }

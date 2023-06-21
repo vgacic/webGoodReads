@@ -19,4 +19,8 @@ public class StavkaPoliceService {
     public void delete(StavkaPolice stavkaPolice) {
         stavkaPoliceRepository.delete(stavkaPolice);
     }
+
+    public List<StavkaPolice> dobaviStavku(Long id) {
+        return null;
+    }
 }

@@ -26,12 +26,21 @@ public class Knjiga implements Serializable {
     @Column
     private double ocena;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Autor autor;
+
 
 
     @OneToOne
     private Zanr zanr;
+
+
+    public Knjiga(String naslov,Date datumObjavljivanja, String ISBN) {
+        this.naslov = naslov;
+        this.datumObjavljivanja = datumObjavljivanja;
+        this.ISBN = ISBN;
+    }
+
+    public Knjiga() {
+    }
 
     public String getNaslov() {
         return naslov;
@@ -96,14 +105,6 @@ public class Knjiga implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
     }
 
     public Zanr getZanr() {

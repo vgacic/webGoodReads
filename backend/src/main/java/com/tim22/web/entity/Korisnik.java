@@ -2,11 +2,17 @@ package com.tim22.web.entity;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.*;
+
 @Entity
 @Table(name="Korisnik")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Korisnik implements Serializable {
 
+    public enum Uloga{
+        ADMINISTRATOR,
+        CITALAC,
+        AUTOR
+    }
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -33,7 +39,8 @@ public class Korisnik implements Serializable {
     protected String opis;
 
     @Column
-    protected String uloga; //citalac, autor, administraror
+    @Enumerated(EnumType.STRING)
+    private Uloga uloga;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "korisnik_id")
@@ -64,12 +71,11 @@ public class Korisnik implements Serializable {
         this.korisnickoIme = korisnickoIme;
     }
 
-    public String getMail() {
+    public String getEmail() {
         return email;
     }
-
-    public void setMail(String mail) {
-        this.email = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getLozinka() {
@@ -104,11 +110,11 @@ public class Korisnik implements Serializable {
         this.opis = opis;
     }
 
-    public String getUloga() {
+    public Uloga getUloga() {
         return uloga;
     }
 
-    public void setUloga(String uloga) {
+    public void setUloga(Uloga uloga) {
         this.uloga = uloga;
     }
 
@@ -123,14 +129,6 @@ public class Korisnik implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public Set<Polica> getPolice() {

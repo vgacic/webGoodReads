@@ -28,15 +28,7 @@ public class ZahtevService {
         return zahtevRepository.findAll();
     }
 
-    public void save(ZahtevZaAktivacijuNalogaAutoraDto zahtevZaAktivacijuNalogaAutoraDto){
-        ZahtevZaAktivacijuNalogaAutora zahtev=new ZahtevZaAktivacijuNalogaAutora();
-
-        zahtev.setDatum(zahtevZaAktivacijuNalogaAutoraDto.getDatum());
-        zahtev.setEmail(zahtevZaAktivacijuNalogaAutoraDto.getEmail());
-        zahtev.setPoruka(zahtevZaAktivacijuNalogaAutoraDto.getPoruka());
-        zahtev.setTelefon(zahtevZaAktivacijuNalogaAutoraDto.getTelefon());
-        zahtevRepository.save(zahtev);
-    }
+    public ZahtevZaAktivacijuNalogaAutora saveZahtev(ZahtevZaAktivacijuNalogaAutora zahtevAktivacija) {return zahtevRepository.save(zahtevAktivacija);}
 
     public void obradi(Long id, Boolean prihvati) {
         ZahtevZaAktivacijuNalogaAutora zahtev = findById(id);
@@ -50,4 +42,7 @@ public class ZahtevService {
         zahtevRepository.save(zahtev);
     }
 
+    public ZahtevZaAktivacijuNalogaAutora findOne(Long zahtevId) {
+        return null;
+    }
 }

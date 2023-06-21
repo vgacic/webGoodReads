@@ -6,10 +6,10 @@ import com.tim22.web.entity.Korisnik;
 import java.util.Date;
 
 public class KorisnikDto {
-        private String ime;
-        private String prezime;
+    private String ime;
+    private String prezime;
 
-        private Date datumRodjenja;
+    private Date datumRodjenja;
 
     public KorisnikDto(String ime, String prezime, Date datumRodjenja) {
         this.ime = ime;
@@ -19,9 +19,9 @@ public class KorisnikDto {
 
     public KorisnikDto(Korisnik korisnik) {
 
-            ime=korisnik.getIme();
-            prezime=korisnik.getPrezime();
-            datumRodjenja=korisnik.getDatumRodjenja();
+        ime=korisnik.getIme();
+        prezime=korisnik.getPrezime();
+        datumRodjenja=korisnik.getDatumRodjenja();
     }
 
 
@@ -34,20 +34,20 @@ public class KorisnikDto {
     }
 
     public String getIme() {
-            return ime;
-        }
-
-        public void setIme(String ime) {
-            this.ime = ime;
-        }
-
-        public String getPrezime() {
-            return prezime;
-        }
-
-        public void setPrezime(String prezime) {
-            this.prezime = prezime;
-        }
-
+        return ime;
     }
+
+    public void setIme(String ime) {
+        this.ime = ime;
+    }
+
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
+    }
+
+}
 

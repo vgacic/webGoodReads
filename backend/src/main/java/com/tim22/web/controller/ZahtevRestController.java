@@ -20,14 +20,29 @@ public class ZahtevRestController {
     private ZahtevService zahtevService;
 
     @GetMapping("api/zahtevi")
-    public ResponseEntity<List<ZahtevZaAktivacijuNalogaAutoraDto>> findAll() {
-        List<ZahtevZaAktivacijuNalogaAutora> zahtevi = zahtevService.findAll();
-        List<ZahtevZaAktivacijuNalogaAutoraDto> dtos = new ArrayList<>();
+    ResponseEntity<?> listaZahteva(HttpSession session)
+    {
+        Korisnik korisnik=(Korisnik) session.getAttribute("korisnik");
+        if(korisnik==null)
+        {
+            return ResponseEntity.badRequest().build();
+        }
+        if(korisnik.getUloga().equals(Korisnik.Uloga.ADMINISTRATOR))
+        {
+            List<ZahtevZaAktivacijuNalogaAutora> sviZahtevi = zahtevService.findAll();
+            List<ZahtevZaAktivacijuNalogaAutoraDto> trazeni=new ArrayList<ZahtevZaAktivacijuNalogaAutoraDto>();
 
-        for (ZahtevZaAktivacijuNalogaAutora zahtev : zahtevi)
-            dtos.add(new ZahtevZaAktivacijuNalogaAutoraDto(zahtev));
-
-        return ResponseEntity.ok(dtos);
+            for(ZahtevZaAktivacijuNalogaAutora z:sviZahtevi)
+            {
+                if(z.getStanje()==Status.NA_CEKANJU)
+                {
+                    ZahtevZaAktivacijuNalogaAutoraDto zahtev=new ZahtevZaAktivacijuNalogaAutoraDto(z.getEmail(),z.getTelefon(),z.getPoruka(),z.getStanje());
+                    trazeni.add(zahtev);
+                }
+            }
+            return ResponseEntity.ok(trazeni);
+        }
+        return ResponseEntity.badRequest().body("Nisi admin, ne mozes videti zahteve.");
     }
 
     @GetMapping("api/zahtev/{id}")
@@ -47,30 +62,19 @@ public class ZahtevRestController {
         if (korisnik == null) {
             return new ResponseEntity<>("Niste prijavljeni", HttpStatus.BAD_REQUEST);
         }
-
-        zahtevService.save(zahtevZaAktivacijuNalogaAutoraDto);
+        ZahtevZaAktivacijuNalogaAutora zahtevZaAktivacijuNalogaAutora=new ZahtevZaAktivacijuNalogaAutora(zahtevZaAktivacijuNalogaAutoraDto.getDatum(),
+                zahtevZaAktivacijuNalogaAutoraDto.getEmail(),
+                zahtevZaAktivacijuNalogaAutoraDto.getPoruka(),
+                zahtevZaAktivacijuNalogaAutoraDto.getTelefon(),
+                zahtevZaAktivacijuNalogaAutoraDto.getAutor(),
+                zahtevZaAktivacijuNalogaAutoraDto.getStanje());
+        zahtevService.saveZahtev(zahtevZaAktivacijuNalogaAutora);
         return ResponseEntity.ok("Dodat zahtev");
     }
 
-//    @DeleteMapping("api/zahtev/{id}")
-//    public ResponseEntity<String> obrisi(@PathVariable Long id, HttpSession session) {
-//        Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
-//
-//        if (korisnik == null) {
-//            return new ResponseEntity<>("Niste prijavljeni", HttpStatus.BAD_REQUEST);
-//        }
-//
-//        ZahtevZaAktivacijuNalogaAutora zahtev = zahtevService.findById(id);
-//
-//        if (zahtev == null) {
-//            return new ResponseEntity<>("Nepostoji zahtev", HttpStatus.BAD_REQUEST);
-//        }
-//
-//        zahtevService.delete(id);
-//        return ResponseEntity.ok("Obrisana");
-//    }
 
-    @PutMapping("api/zahtev/{id}")
+
+    @PutMapping("api/obradi_zahtev/{id}")//jel mi treba ovo?
     public ResponseEntity<String> obradi(@PathVariable Long id, @RequestParam Boolean prihvati, HttpSession session) {
         Korisnik korisnik = (Korisnik) session.getAttribute("korisnik");
 
@@ -89,5 +93,33 @@ public class ZahtevRestController {
         zahtevService.obradi(id, prihvati);
 
         return ResponseEntity.ok("Obradjen zahtev");
+    }
+
+
+    @PostMapping("/api/zahtev/posalji")
+    ResponseEntity<String> posaljiZahtev(@RequestBody ZahtevZaAktivacijuNalogaAutoraDto zahtevDto)
+    {
+        ZahtevZaAktivacijuNalogaAutora zahtev= new ZahtevZaAktivacijuNalogaAutora();
+        zahtev.setEmail(zahtevDto.getEmail());
+        zahtev.setTelefon(zahtevDto.getTelefon());
+        zahtev.setPoruka(zahtevDto.getPoruka());
+        zahtev.setStanje(Status.NA_CEKANJU);
+        return ResponseEntity.ok("Zahtev je poslat");
+    }
+
+
+    @PutMapping("/api/zahtev/prihvati/{id}")
+    public ResponseEntity<String> prihvatiZahtev(@PathVariable(name = "id")Long zahtevId,HttpSession session)
+    {
+        Korisnik loggedKorisnik=(Korisnik) session.getAttribute("korisnik");
+        if(loggedKorisnik.getUloga()==Korisnik.Uloga.ADMINISTRATOR)
+        {
+            ZahtevZaAktivacijuNalogaAutora zahtev=zahtevService.findById(zahtevId);
+
+            zahtev.setStanje(Status.ODOBREN);
+            zahtevService.saveZahtev(zahtev);
+
+        }
+        return ResponseEntity.ok("Prihvacen zahtev");
     }
 }

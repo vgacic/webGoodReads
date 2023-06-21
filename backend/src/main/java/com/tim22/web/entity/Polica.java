@@ -14,10 +14,26 @@ public class Polica implements Serializable {
     private Long id;
     private String naziv;
     private boolean primarna;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.MERGE)
+    @JoinColumn(name = "korisnik_id")
+    private Korisnik korisnik;
+
+
+
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "polica_id")
     private Set<StavkaPolice> stavkaPolice = new HashSet<>();
+
+
+    public Polica(String naziv, boolean primarna) {
+        this.naziv = naziv;
+        this.primarna = primarna;
+
+    }
+
+    public Polica() {
+    }
 
     public Long getId() {
         return id;
@@ -43,7 +59,7 @@ public class Polica implements Serializable {
         this.naziv = naziv;
     }
 
-    public boolean isPrimarna() {
+    public boolean getPrimarna() {
         return primarna;
     }
 

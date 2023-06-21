@@ -21,24 +21,25 @@ public class KorisnikRestController {
     @Autowired
    private KorisnikService korisnikService;
 
-    @PostMapping("api/register")
+    @PostMapping("api/registracija") //da li je dobro sad?PROVERI
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         if (!registerDto.getLozinka().equals(registerDto.getPonovljenaLozinka()))
             return new ResponseEntity<>("Nije dobra lozinka", HttpStatus.BAD_REQUEST);
         korisnikService.register(registerDto);
         return ResponseEntity.ok("Registrovan");
     }
+
     @PostMapping("api/login")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto, HttpSession session)
     {
         if(loginDto.getEmail().isEmpty() || loginDto.getLozinka().isEmpty())
-            return new ResponseEntity("Invalid login data", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("Pogresni podaci za logovanje.", HttpStatus.BAD_REQUEST);
         Korisnik loggedKorisnik=korisnikService.login(loginDto.getEmail(), loginDto.getLozinka());
         if(loggedKorisnik==null){
-            return new ResponseEntity<>("User does not exist!", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Korisnik ne postoji.", HttpStatus.NOT_FOUND);
         }
         session.setAttribute("korisnik", loggedKorisnik);
-        return ResponseEntity.ok("Successfully logged in!");
+        return ResponseEntity.ok("Uspesno ulogovan korisnik.");
     }
 
     @PostMapping("api/logout")
@@ -94,10 +95,10 @@ public class KorisnikRestController {
         }
 
         // Korisnik brise sam sebe
-        if (id == null && !korisnik.getUloga().equals("administrator")) {
+        if (id == null && !korisnik.getUloga().equals(Korisnik.Uloga.ADMINISTRATOR)) {
             korisnikService.delete(korisnik.getId());
             return ResponseEntity.ok("Obrisan korisnik");
-        } else if (id != null && korisnik.getUloga().equals("administrator")) {
+        } else if (id != null && korisnik.getUloga().equals(Korisnik.Uloga.ADMINISTRATOR)) {
             korisnikService.delete(id);
             // Autor ne moze da se obrise ako ima knjiga ali se i dalje ispise ovo
             return ResponseEntity.ok("Obrisan korisnik, mozda?");
@@ -120,5 +121,17 @@ public class KorisnikRestController {
         }
 
         return ResponseEntity.ok(police);
+    }
+
+    @GetMapping("/api/korisnici/{korisnickoIme}")
+    public Korisnik getKorisnik(@PathVariable(name = "korisnickoIme")String korisnickoIme)
+    {
+        Korisnik korisnik=korisnikService.findBykorisnickoIme(korisnickoIme);
+
+        if(korisnik==null)
+        {
+            return null;
+        }
+        return korisnik;
     }
 }

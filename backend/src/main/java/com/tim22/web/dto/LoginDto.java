@@ -5,10 +5,23 @@ public class LoginDto {
     private String email;
     private String lozinka;
 
-    public LoginDto(String email, String lozinka) {
+    // private String korisnickoIme;
+
+    public LoginDto(String korisnickoIme, String lozinka) {
         this.email = email;
         this.lozinka = lozinka;
+        // this.korisnickoIme=korisnickoIme;
     }
+
+
+   /* public String getKorisnickoIme() {
+        return korisnickoIme;
+    }*/
+
+  /*  public void setKorisnickoIme(String korisnickoIme) {
+        this.korisnickoIme = korisnickoIme;
+    }
+*/
 
     public String getEmail() {
         return email;

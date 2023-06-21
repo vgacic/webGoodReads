@@ -37,8 +37,8 @@ public class KorisnikService {
     {
         List<Korisnik> korisnici= korisnikRepository.findAll();
         for(Korisnik korisnik : korisnici) {
-           if(korisnik.getPassword().equals(lozinka)&&korisnik.getMail().equals(email))
-               return korisnik;
+            if(korisnik.getPassword().equals(lozinka)&&korisnik.getEmail().equals(email))
+                return korisnik;
 
         }
         return null;
@@ -79,12 +79,41 @@ public class KorisnikService {
     public void delete(Long id) {
         Korisnik korisnik = findOne(id);
 
-        if (korisnik.getUloga().equals("autor")) {
-            if (!knjigaService.findAllByAutorId(korisnik.getId()).isEmpty())
-                return;
-            autorRepository.delete((Autor) korisnik);
+        if (korisnik.getUloga().equals(Korisnik.Uloga.AUTOR)&&!((Autor)korisnik).getSpisakKnjiga().isEmpty()){
+            return;
         }
 
         korisnikRepository.delete(korisnik);
+    }
+
+    public boolean dodajPolicu(Long userId, Polica polica) {
+        Optional<Korisnik>korisnik=korisnikRepository.findById(userId);
+        if(!korisnik.isPresent()){
+            return false;
+        }
+        Korisnik korisnik1=korisnik.get();
+        Set<Polica>police=korisnik1.getPolice();
+        police.add(polica);
+        return true;
+    }
+
+    public Korisnik findById(Long korisnikId) { //NADJI KAKO IDE
+        Korisnik korisnik=new Korisnik();
+        return korisnik;
+    }
+
+    public boolean existsMail(String email) {
+        return false;
+    }
+
+    public boolean existsKorisnickoIme(String korisnickoIme) {
+        return false;
+    }
+
+    public void create(RegisterDto registerDto) {
+    }
+
+    public Korisnik findBykorisnickoIme(String korisnickoIme) {
+        return this.korisnikRepository.findBykorisnickoIme(korisnickoIme);
     }
 }

@@ -1,5 +1,6 @@
 package com.tim22.web.service;
 
+import com.tim22.web.dto.AzuriranaKnjigaDto;
 import com.tim22.web.dto.KnjigaDto;
 import com.tim22.web.entity.Knjiga;
 import com.tim22.web.entity.StavkaPolice;
@@ -7,6 +8,7 @@ import com.tim22.web.repository.KnjigaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,7 @@ public class KnjigaService {
     private KnjigaRepository knjigaRepository;
     @Autowired
     private StavkaPoliceService stavkaPoliceService;
+
 
     public Knjiga findById(Long id) {
         Optional<Knjiga> knjiga = knjigaRepository.findById(id);
@@ -36,9 +39,9 @@ public class KnjigaService {
         return knjigaRepository.findAll();
     }
 
-    public List<Knjiga> findAllByAutorId(Long autorId) {
-        return knjigaRepository.findAllByAutorId(autorId);
-    }
+    //public List<Knjiga> findAllByAutorId(Long autorId) {
+       // return knjigaRepository.findAllByAutorId(autorId);
+    //}
 
     public void save(KnjigaDto knjigaDto) {
         Knjiga knjiga = new Knjiga();
@@ -53,5 +56,31 @@ public class KnjigaService {
         for (StavkaPolice stavkaPolice : stavkaPoliceService.findAllByKnjigaId(id))
             stavkaPoliceService.delete(stavkaPolice);
         knjigaRepository.deleteById(id);
+    }
+
+    public Knjiga getByName(String naslov) {
+        Knjiga knjiga=new Knjiga();
+        return knjiga;
+    }
+
+    public static void deleteKnjiga(Long id, Long policaId, Long knjigaId) {
+    }
+
+    public Knjiga getKnjigaById(Long knjigaId) {
+        Knjiga knjiga=new Knjiga();
+        return knjiga;
+    }
+
+    public void obrisiIzBaze(Long id) {
+        knjigaRepository.deleteById(id);
+    }
+
+    public void updateKnjigaAdmin(Long knjigaId, AzuriranaKnjigaDto azuriranaKnjigaDto) {
+
+    }
+
+    public Knjiga kreirajKnjigu(String naslov, Date datum, String isbn) {
+        Knjiga knjiga=new Knjiga(naslov,datum,isbn);
+        return knjiga;
     }
 }

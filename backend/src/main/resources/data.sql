@@ -1,7 +1,7 @@
-INSERT INTO KORISNIK(datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES('1995-1-1', 'Marko', 'mmarkovic','marko123','marko@gmail.com','radnik','Markovic','slika.jpg','autor');
-INSERT INTO KORISNIK(datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES('1996-2-2', 'Sara', 'ssaric','sara123','sara@uns.ac.rs','nastavnik','Saric','slika123.jpg','autor');
-INSERT INTO KORISNIK(datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES('1997-3-3', 'Mirko', 'mmirko','mirko123','mirko@gmail.com','zaposleni','Mikic','slika122.jpg','administrator');
-INSERT INTO KORISNIK(datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES('1998-4-4', 'Lana', 'llana','lana123','lana@uns.ac.rs','student','Peric','slika111.jpg','citalac');
+INSERT INTO KORISNIK(datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES('1995-1-1', 'Marko', 'mmarkovic','marko123','marko@gmail.com','radnik','Markovic','slika.jpg','AUTOR');
+INSERT INTO KORISNIK(datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES('1996-2-2', 'Sara', 'ssaric','sara123','sara@uns.ac.rs','nastavnik','Saric','slika123.jpg','AUTOR');
+INSERT INTO KORISNIK(datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES('1997-3-3', 'Mirko', 'mmirko','mirko123','mirko@gmail.com','zaposleni','Mikic','slika122.jpg','ADMINISTRATOR');
+INSERT INTO KORISNIK(datum_Rodjenja, ime, korisnicko_Ime, lozinka, email, opis, prezime, profilna_Slika, uloga) VALUES('1998-4-4', 'Lana', 'llana','lana123','lana@uns.ac.rs','student','Peric','slika111.jpg','CITALAC');
 
 
 INSERT INTO AUTOR(id,aktivan) VALUES(1,true);
@@ -35,5 +35,5 @@ INSERT INTO RECENZIJA(datum_Recenzije, ocena, tekst, korisnik_id, stavka_police_
 INSERT INTO RECENZIJA(datum_Recenzije, ocena, tekst, korisnik_id, stavka_police_id) VALUES('2023-5-5',6,'Ne dopada mi se',1,1);
 
 
-INSERT INTO ZAHTEV_ZA_AKTIVACIJU_NALOGA_AUTORA(datum, email, poruka, stanje, telefon) VALUES('2015-1-1','sara@uns.ac.rs','Zahtev prihvacen.','ODOBREN','0615566381');
+INSERT INTO ZAHTEV_ZA_AKTIVACIJU_NALOGA_AUTORA(datum, email, poruka, stanje, telefon) VALUES('2015-1-1','sara@uns.ac.rs','Zahtev prihvacen.','ODBIJEN','0615566381');
 INSERT INTO ZAHTEV_ZA_AKTIVACIJU_NALOGA_AUTORA(datum, email, poruka, stanje, telefon) VALUES('2015-2-2','lana@uns.ac.rs','Zahtev prihvacen','ODOBREN','0645566372');
