@@ -110,8 +110,6 @@ public class KnjigaRestController {
     public ResponseEntity<List<KnjigaDto>> pretraga(@RequestParam String pretraga) {
         List<Knjiga> knjige = new ArrayList<>();
         knjige.addAll(knjigaService.findAllByNaslov(pretraga));
-//        knjige.addAll(knjigaService.findAllByZanr(pretraga));
-
         List<KnjigaDto> dtos = new ArrayList<>();
         for (Knjiga knjiga : knjige)
             dtos.add(new KnjigaDto(knjiga));
