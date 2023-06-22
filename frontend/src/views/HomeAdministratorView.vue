@@ -21,12 +21,14 @@
 <script>
 import axios from 'axios';
 import Logout from '@/components/Logout.vue';
+import Login from '@/components/Login.vue';
 
 
 export default  {
   name: "HomeAdministratorView",
   components:{
     Logout,
+    Login,
   },
 data(){
 
@@ -46,7 +48,7 @@ mounted(){
 methods:{
   getKnjige(){
     axios
-    .get("localhost:8880/api/knjige",{withCredientials:true})
+    .get("http://localhost:8880/api/knjige",{withCredientials:true})
     .then((response)=>{
         this.knjige=response.data;
     })
@@ -57,7 +59,7 @@ methods:{
   },
   getKorisnici(){
     axios
-    .get("localhost:8880/api/korisnici",{withCredentials:true})
+    .get("http://localhost:8880/api/korisnici",{withCredentials:true})
     .then((response)=>{
       this.korisnici=response.data;
     })
@@ -69,7 +71,7 @@ methods:{
   },
   getZanrovi(){
 	axios
-	.get("localhost:8880/api/zanrovi",{withCredientials: true})
+	.get("http://localhost:8880/api/zanrovi",{withCredientials: true})
 	.then((response)=>{
 		this.zanrovi=response.data;
 		
@@ -85,7 +87,7 @@ methods:{
 },
 getZahtevi(){
 	axios
-	.get("localhost:8880/api/zahtevi",{withCredientials: true})
+	.get("http://localhost:8880/api/zahtevi",{withCredientials: true})
 	.then((response)=>{
 		this.zahtevi=response.data;
 		

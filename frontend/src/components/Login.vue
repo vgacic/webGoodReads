@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'PrijaviSe',
+  name: 'login',
   data: function () {
     return {
       LoginDto: {
@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     prijava: function () {
-      fetch('http://localhost:8880/api/login', {
+      fetch("http://localhost:8880/api/login", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(this.LoginDto)
@@ -37,7 +37,7 @@ export default {
       })
     }
   }
-}
+};
 </script>
 
 <style scoped>

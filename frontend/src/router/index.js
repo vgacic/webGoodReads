@@ -1,12 +1,15 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeAdministratorView from '../views/HomeAdministratorView.vue'
-import HomeAutorView from '../views/HomeAutorView.vue'
-import HomeNeprijavljeniKorisnikView from '../views/HomeNeprijavljeniKorisnikView.vue'
-import Login from '@/components/Login'
-import Logout from '@/components/Logout'
-import Register from '@/components/Register'
-import HomePage from '../views/HomePage.vue'
-import LoggedIn from '../views/LoggedIn.vue'
+import { createRouter, createWebHashHistory } from 'vue-router';
+import HomeAdministratorView from '../views/HomeAdministratorView.vue';
+import HomeAutorView from '../views/HomeAutorView.vue';
+import HomeNeprijavljeniKorisnikView from '../views/HomeNeprijavljeniKorisnikView.vue';
+import Login from '@/components/Login';
+import Register from '@/components/Register';
+import HomePage from '../views/HomePage.vue';
+import LoggedIn from '../views/LoggedIn.vue';
+import Logout from '@/components/Logout.vue';
+import HomeCitalacView from '../views/HomeCitalacView.vue';
+
+
 
 
 
@@ -33,9 +36,6 @@ const routes = [
     path:'/logout',
     name:'logout',
     component: Logout,
-    meta: {
-      title: 'logout'
-    }
   },
   {
     path:'/register',
@@ -46,7 +46,7 @@ const routes = [
     }
   },
   {
-    path:'/HomeAutor',
+    path:'/homeAutor',
     name: 'HomeAutor',
     component:HomeAutorView,
     meta:{
@@ -55,11 +55,19 @@ const routes = [
   },
 
   {
-    path:'/HomeAdministrator',
+    path:'/homeAdministrator',
     name: 'HomeAdministrator',
     component:HomeAdministratorView,
     meta:{
       title:'HomeAdministrator'
+    }
+  },
+  {
+    path:'/homeCitalacView',
+    name: 'HomeCitalacView',
+    component:HomeAdministratorView,
+    meta:{
+      title:'HomeCitalacView'
     }
   }
 

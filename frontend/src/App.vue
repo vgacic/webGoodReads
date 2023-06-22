@@ -1,9 +1,10 @@
 <template>
   <div id="nav">
    <button> <router-link to="/">Home</router-link></button>
-  <button ><router-link to="/Logout">Log out</router-link></button>
+  <button ><router-link to="/logout">Log out</router-link></button>
    <button> <router-link to="/login">Log in</router-link></button>
    <button><router-link to="/register">Register</router-link></button>
+   
     
  
   </div>

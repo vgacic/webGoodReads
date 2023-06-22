@@ -3,6 +3,7 @@
   </template>
   
   <script>
+  /*
   import PolicaComp from '../components/PolicaComp.vue'
   export default {
     name: 'LoggedIn',
@@ -18,5 +19,5 @@
         .then(data => { this.police = data })
         .catch(error => console.error(error))
     }
-  }
+  }*/
   </script>

@@ -7,17 +7,18 @@
 
 <script>
 export default {
+  name: 'OdjaviSe',
+
   methods: {
     logout() {
-      // Perform your logout logic here
-      // You can clear user authentication, remove tokens, etc.
-      // Remember to handle success and error cases accordingly
-      console.log('User logged out');
+      
+
+      localStorage.clear();
+      this.$router.push('/login');
     }
   }
 };
 </script>
-
 <style scoped>
 h2 {
   text-align: center;
