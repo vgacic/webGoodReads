@@ -14,7 +14,7 @@
   <div class="home">
   </div>
 <footer>
-  <p>&copy;2023BookVerse</p>
+  <p>&copy;2023BookHaven</p>
   </footer>
 </template>
 
@@ -38,15 +38,16 @@ data(){
     zanrovi:[],
     zahtevi:[],
   };
-},
-mounted(){
+}
+};
+/*mounted(){
   this.getKnjige();
   this.getKorisnici();
   this.getZanrovi();
   this.getZahtevi();
 },
 methods:{
-  getKnjige(){
+  getKnjige:function(){
     axios
     .get("http://localhost:8880/api/knjige",{withCredientials:true})
     .then((response)=>{
@@ -69,7 +70,7 @@ methods:{
 
     });
   },
-  getZanrovi(){
+  getZanrovi:function(){
 	axios
 	.get("http://localhost:8880/api/zanrovi",{withCredientials: true})
 	.then((response)=>{
@@ -82,10 +83,10 @@ methods:{
 
 	console.log(error);
 	alert("Failed to fetch zanrovi");
-	})
+	});
 
 },
-getZahtevi(){
+getZahtevi:function(){
 	axios
 	.get("http://localhost:8880/api/zahtevi",{withCredientials: true})
 	.then((response)=>{
@@ -101,9 +102,9 @@ getZahtevi(){
 	});
 
 },
-},
-};
 
+};
+*/
 
 </script>
 

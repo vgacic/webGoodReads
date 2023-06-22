@@ -71,7 +71,9 @@ registerUser(event){
     axios.post('http://localhost:8880/api/registracija',this.registerData)
     .then(response=>{
     this.registrationStatus=response.data;
-    alert("Uspesna registracija");})
+    alert("Uspesna registracija")
+    this.$router.push('/homeCitalac')
+    ;})
 
     .catch(error=>{
         if(error.response&&error.response.data){

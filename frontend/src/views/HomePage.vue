@@ -9,6 +9,8 @@
       </ul>
       <p v-else>No books found.</p>
     </div>
+    
+
 </template>
 
 <script>
@@ -23,6 +25,7 @@ export default {
   },
   mounted() {
     this.fetchKnjige();
+  
   },
   methods: {
     fetchKnjige() {
@@ -34,6 +37,10 @@ export default {
           console.error('Error fetching books:', error);
         });
     }
-  }
+    }
+
+  
 };
 </script>
+
+

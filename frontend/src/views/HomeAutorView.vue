@@ -1,7 +1,11 @@
 <template>
+   <header>
+
     <div>
-        <h1>Welcome to BookVerse!</h1>
+        <ul class="menu">
+        </ul>
     </div>
+    </header>
 </template>
 <script>
 

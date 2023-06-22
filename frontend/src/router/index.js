@@ -1,7 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeAdministratorView from '../views/HomeAdministratorView.vue';
 import HomeAutorView from '../views/HomeAutorView.vue';
-import HomeNeprijavljeniKorisnikView from '../views/HomeNeprijavljeniKorisnikView.vue';
 import Login from '@/components/Login';
 import Register from '@/components/Register';
 import HomePage from '../views/HomePage.vue';
@@ -63,7 +62,7 @@ const routes = [
     }
   },
   {
-    path:'/homeCitalacView',
+    path:'/homeCitalac',
     name: 'HomeCitalacView',
     component:HomeAdministratorView,
     meta:{

@@ -4,7 +4,10 @@
   <button ><router-link to="/logout">Log out</router-link></button>
    <button> <router-link to="/login">Log in</router-link></button>
    <button><router-link to="/register">Register</router-link></button>
-   
+   <button><router-link to="/homeAutor">Home autor </router-link></button>
+   <button><router-link to="/homeCitalac">Home citalac</router-link></button>
+   <button><router-link to="/homeAdministrator">Home admin</router-link></button>
+   <button><router-link to="/profil">Profil</router-link></button>
     
  
   </div>

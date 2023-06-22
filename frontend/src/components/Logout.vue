@@ -11,7 +11,9 @@ export default {
 
   methods: {
     logout() {
-      
+     /* fetch("http://localhost:8880/api/logout"),{
+        method:'POST'
+      }*/
 
       localStorage.clear();
       this.$router.push('/login');
