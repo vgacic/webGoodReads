@@ -1,13 +1,11 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/Login">Login</router-link>
-    <router-link to="/Logout">Logout</router-link>
-    <router-link to="/Register">Register</router-link>
-    <router-link to="/HomeAdministrator">HomeAdministrator</router-link>
-    <router-link to="/HomeCitalac">HomeCitalac</router-link>
-    <router-link to="/HomeAutor">HomeAutor</router-link>
-    <router-link to="/HomeNeprijavljeniKorisnik">HomeNeprijavljeniKorisnik</router-link>
+   <button> <router-link to="/">Home</router-link></button>
+  <button ><router-link to="/Logout">Log out</router-link></button>
+   <button> <router-link to="/login">Log in</router-link></button>
+   <button><router-link to="/register">Register</router-link></button>
+    
+ 
   </div>
   <router-view/>
 </template>

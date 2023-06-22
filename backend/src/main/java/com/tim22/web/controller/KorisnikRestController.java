@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class KorisnikRestController {
     @Autowired
@@ -26,20 +27,20 @@ public class KorisnikRestController {
         if (!registerDto.getLozinka().equals(registerDto.getPonovljenaLozinka()))
             return new ResponseEntity<>("Nije dobra lozinka", HttpStatus.BAD_REQUEST);
         korisnikService.register(registerDto);
-        return ResponseEntity.ok("Registrovan");
+        return new ResponseEntity("Registrovan", HttpStatus.OK);
     }
 
     @PostMapping("api/login")
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto, HttpSession session)
+    public ResponseEntity<Korisnik> login(@RequestBody LoginDto loginDto, HttpSession session)
     {
         if(loginDto.getEmail().isEmpty() || loginDto.getLozinka().isEmpty())
-            return new ResponseEntity("Pogresni podaci za logovanje.", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         Korisnik loggedKorisnik=korisnikService.login(loginDto.getEmail(), loginDto.getLozinka());
         if(loggedKorisnik==null){
-            return new ResponseEntity<>("Korisnik ne postoji.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         session.setAttribute("korisnik", loggedKorisnik);
-        return ResponseEntity.ok("Uspesno ulogovan korisnik.");
+        return new ResponseEntity(loggedKorisnik, HttpStatus.OK);
     }
 
     @PostMapping("api/logout")

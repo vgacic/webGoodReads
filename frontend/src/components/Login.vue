@@ -1,41 +1,43 @@
 <template>
-    <div>
-      <h2>Login</h2>
-      <form @submit.prevent="login">
-        <div>
-          <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" required>
-        </div>
-        <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" v-model="password" required>
-        </div>
-        <div>
-          <button type="submit">Log In</button>
-        </div>
-      </form>
-    </div>
-  </template>
+  <form>
+      <label>Email</label>
+      <input v-model="LoginDto.email"/>
+      <label>Lozinka</label>
+      <input v-model="LoginDto.lozinka"/>
+      <button v-on:click="prijava()">Prijavi se</button>
+  </form>
+</template>
 
 
 <script>
 export default {
-  data() {
+  name: 'PrijaviSe',
+  data: function () {
     return {
-      email: '',
-      password: ''
-    };
+      LoginDto: {
+        email: '',
+        lozinka: ''
+      }
+    }
   },
   methods: {
-    login() {
-      
-      console.log('Email:', this.email);
-      console.log('Password:', this.password);
-      
-      
+    prijava: function () {
+      fetch('http://localhost:8880/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.LoginDto)
+      }).then(response => {
+        if (response.ok) {
+          return response.json()
+        }
+      }).then(body => {
+        this.$router.push('/profil?id=' + body.id)
+      }).catch(error => {
+        console.error(error)
+      })
     }
-  }
-};
+  }
+}
 </script>
 
 <style scoped>

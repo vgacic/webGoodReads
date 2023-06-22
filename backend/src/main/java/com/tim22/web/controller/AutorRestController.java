@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Set;
 
 
-
+@CrossOrigin
 @RestController
 public class AutorRestController {
     @Autowired

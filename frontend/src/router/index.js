@@ -5,22 +5,29 @@ import HomeNeprijavljeniKorisnikView from '../views/HomeNeprijavljeniKorisnikVie
 import Login from '@/components/Login'
 import Logout from '@/components/Logout'
 import Register from '@/components/Register'
+import HomePage from '../views/HomePage.vue'
+import LoggedIn from '../views/LoggedIn.vue'
+
+
+
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeNeprijavljeniKorisnikView,
-    meta: {
-      title: 'home'
-    }
+    component: HomePage
+    
+  },
+  {
+    path: '/profil',
+    name:'profil',
+    component: LoggedIn
+    
   },
   {
     path: '/login',
     name:'login',
-    component: Login,
-    meta: {
-      title: 'login'
-    }
+    component: Login
+    
   },
   {
     path:'/logout',
