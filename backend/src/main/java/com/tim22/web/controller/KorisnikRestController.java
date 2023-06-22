@@ -45,9 +45,9 @@ public class KorisnikRestController {
 
     @PostMapping("api/logout")
     public ResponseEntity Logout(HttpSession session){
-        Korisnik loggedEmployee = (Korisnik) session.getAttribute("korisnik");
+        Korisnik loggedKorisnik = (Korisnik) session.getAttribute("korisnik");
 
-        if (loggedEmployee == null)
+        if (loggedKorisnik == null)
             return new ResponseEntity("Forbidden", HttpStatus.FORBIDDEN);
 
         session.invalidate();
