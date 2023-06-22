@@ -47,6 +47,13 @@
           <td><p>Ponovljena lozinka  </p></td>
           <td><input type="text"></td>
         </tr>
+        <tfoot>
+          <tr>
+            <td colspan="3">
+              <button type="submit">Registracija</button>
+            </td>
+          </tr>
+        </tfoot>
       </table>
       
     </div>
@@ -90,6 +97,20 @@ caption {
   color: lightpink;
   text-align: center;
 }
+
+tfoot .footer-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+tfoot button {
+  padding: 8px 16px;
+  background-color: #FFC0CB;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
       </style>
 
 <div class="container">
@@ -105,7 +126,7 @@ caption {
   .container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    place-items: center;
     height: 100vh;
   }
   
