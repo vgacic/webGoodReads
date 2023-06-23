@@ -7,8 +7,9 @@ import HomePage from '../views/HomePage.vue';
 import LoggedIn from '../views/LoggedIn.vue';
 import Logout from '@/components/Logout.vue';
 import HomeCitalacView from '../views/HomeCitalacView.vue';
-
-
+import PretraziKnjiguPoNaslovu from '../views/PretraziKnjiguPoNaslovu.vue';
+import PretraziKorisnikaPoId from '../views/PretraziKorisnikaPoId.vue';
+import DodajKnjigu from '../views/DodajKnjigu.vue';
 
 
 
@@ -64,11 +65,26 @@ const routes = [
   {
     path:'/homeCitalac',
     name: 'HomeCitalacView',
-    component:HomeAdministratorView,
+    component:HomeCitalacView,
     meta:{
       title:'HomeCitalacView'
     }
-  }
+  },
+  {
+    path:'/search',
+    name:'/PretragaKnjige',
+    component:PretraziKnjiguPoNaslovu
+  },
+  {
+    path:'/search1',
+    name:'/PretragaKorisnikaPoId',
+    component:PretraziKorisnikaPoId
+  },
+  {
+    path:'/dodajKnjigu',
+    name:'DodajKnjigu',
+    component:DodajKnjigu
+  },
 
 
 ];

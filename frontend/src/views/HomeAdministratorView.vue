@@ -1,21 +1,38 @@
 <template>
-  <header>
-    <div class="container2">
-      <div class="meniDeo">
-        <div>
-            <ul class="meni">
+<p>&copy;2023BookHaven</p>
+<h1>Home admin</h1>
+<h2>Sve knjige</h2>
+      <ul v-if="knjige.length > 0">
+        <li v-for="knjiga in knjige" :key="knjiga.id">
+          {{ knjiga.naslov }}
+        </li>
+      </ul>
+      <p v-else>No books found.</p>
+      <h2>Zanrovi</h2>
 
-              <li id="pocetna"><a href="/homeAdministrator">Pocetna</a></li>
-            </ul>
-        </div>
-        </div>
-    </div>
-  </header>
-  <div class="home">
-  </div>
-<footer>
-  <p>&copy;2023BookHaven</p>
-  </footer>
+      <ul v-if="zanrovi.length > 0">
+        <li v-for="zanr in zanrovi" :key="zanr.id">
+          {{ zanr.naziv }}
+        </li>
+      </ul>
+      <p v-else>No genres found.</p>
+
+      <h2>Korisnici</h2>
+      <ul v-if="korisnici.length > 0">
+        <li v-for="korisnik in korisnici" :key="korisnik.id">
+         Ime:  {{ korisnik.ime }} <br> Prezime: {{ korisnik.prezime }}<br> Datum rodjenja: {{ korisnik.datumRodjenja }} <hr>
+        </li>
+      </ul>
+      <p v-else>No users found.</p>
+
+      <h2>Pretrazi korisnika po id</h2>
+      <input type="text" v-model="searchTerm1" placeholder="ID korisnika">
+      <button @click="search1">Search</button>
+
+
+      <h2>Dodaj knjigu</h2>
+      <button @click="dodajKnjigu">Dodaj Knjigu</button>
+
 </template>
 
 <script>
@@ -26,94 +43,87 @@ import Login from '@/components/Login.vue';
 
 export default  {
   name: "HomeAdministratorView",
-  components:{
-    Logout,
-    Login,
-  },
+
 data(){
 
   return{
     knjige :[],
     korisnici:[],
     zanrovi:[],
-    zahtevi:[],
+ 
   };
-}
-};
-/*mounted(){
-  this.getKnjige();
-  this.getKorisnici();
-  this.getZanrovi();
-  this.getZahtevi();
+},
+
+mounted(){
+  this.fetchKnjige();
+  this.fetchKorisnici();
+  this.fetchZanrovi();
+
 },
 methods:{
-  getKnjige:function(){
-    axios
-    .get("http://localhost:8880/api/knjige",{withCredientials:true})
-    .then((response)=>{
-        this.knjige=response.data;
-    })
-    .catch((error)=>{
-      console.log(error);
-      alert("Failed to fetch knjige");
-    });
-  },
-  getKorisnici(){
-    axios
-    .get("http://localhost:8880/api/korisnici",{withCredentials:true})
+  fetchKnjige() {
+      axios.get("http://localhost:8880/api/knjige")
+        .then(response => {
+          this.knjige = response.data; 
+        })
+        .catch(error => {
+          console.error('Error fetching books:', error);
+        });
+    },
+  fetchKorisnici(){
+    axios.get("http://localhost:8880/api/korisnici")
     .then((response)=>{
       this.korisnici=response.data;
     })
     .catch((error)=>{
-        console.log(error);
-        alert("Failed to fetch korisnici.")
-
+        console.log('Error fetching users',error);
     });
   },
-  getZanrovi:function(){
-	axios
-	.get("http://localhost:8880/api/zanrovi",{withCredientials: true})
+  fetchZanrovi(){
+	axios.get("http://localhost:8880/api/zanrovi")
 	.then((response)=>{
 		this.zanrovi=response.data;
-		
-	
 	})
-
 	.catch((error)=>{
-
-	console.log(error);
-	alert("Failed to fetch zanrovi");
+        console.log('Error fetching zanrovi',error);
 	});
 
 },
-getZahtevi:function(){
-	axios
-	.get("http://localhost:8880/api/zahtevi",{withCredientials: true})
-	.then((response)=>{
-		this.zahtevi=response.data;
-		
-	
-	})
-
-	.catch((erro)=>{
-
-	console.log(error);
-	alert("Failed to fetch zahtevi");
-	});
-
+search1(){
+  if(this.searchTerm1){
+        this.$router.push({path:'/search1',query:{searchTerm1:this.searchTerm1}});
+      }
 },
+
+dodajKnjigu(){
+  this.$router.push({path:'/dodajKnjigu'});
+
+}
+
+
+}
 
 };
-*/
+
 
 </script>
 
 
 <style scoped>
-/* Add your component-specific styles here */
 h1 {
   text-align: center;
   margin-top: 2rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: lightpink;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 </style>

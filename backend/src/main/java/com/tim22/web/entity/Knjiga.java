@@ -30,6 +30,7 @@ public class Knjiga implements Serializable {
 
 
     @OneToOne
+    @JoinColumn(name = "zanr_id")
     private Zanr zanr;
 
 

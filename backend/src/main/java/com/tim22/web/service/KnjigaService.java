@@ -83,4 +83,24 @@ public class KnjigaService {
         Knjiga knjiga=new Knjiga(naslov,datum,isbn);
         return knjiga;
     }
+
+    public Knjiga nadjiKnjiguPoNaslovu(String naslov) {
+        Knjiga knjiga=knjigaRepository.findByNaslov(naslov);
+        if(knjiga!=null)
+        {
+            return knjiga;
+        }
+        List<Knjiga> knjige=knjigaRepository.findAll();
+        for(Knjiga k : knjige)
+        {
+            if(k.getNaslov().equalsIgnoreCase(naslov)){
+                return k;
+            }
+            else if(k.getNaslov().contains(naslov))
+            {
+                return k;
+            }
+        }
+        return null;
+    }
 }

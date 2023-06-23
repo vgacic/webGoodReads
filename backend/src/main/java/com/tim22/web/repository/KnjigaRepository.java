@@ -11,4 +11,6 @@ public interface KnjigaRepository extends JpaRepository<Knjiga, Long> {
     //List<Knjiga> findAllByAutorId(Long autorId);
     List<Knjiga> findAllByNaslov(String naslov);
     List<Knjiga> findAllByZanr(String zanr);
+
+    Knjiga findByNaslov(String naslov);
 }

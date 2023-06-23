@@ -17,10 +17,10 @@ INSERT INTO POLICA(naziv ,primarna) VALUES('polica 2',false);
 
 
 
-INSERT INTO KNJIGA(ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, autor_id) VALUES('78-3-16-148410-0', 1000,'2020-2-2','Ana Karenjina','',10,'Zanimljivo',1);
-INSERT INTO KNJIGA(ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, autor_id) VALUES('978-3-16-148410-1',200,'2019-3-3','Bela griva','', 6, 'Onako',2);
-INSERT INTO KNJIGA(ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, autor_id) VALUES('978-3-16-148410-2',300,'2017-4-4', 'Bele klizaljke','', 9,'Odlicna knjiga',2);
-INSERT INTO KNJIGA(ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena, opis, autor_id) VALUES('978-3-16-148410-3',400,'2020-5-5','Osnove finansijskog inzenjeringa 1','',8,'Super',1);
+INSERT INTO KNJIGA(ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena,zanr_id, opis, autor_id) VALUES('78-3-16-148410-0', 1000,'2020-2-2','Ana Karenjina','',10,2,'Zanimljivo',1);
+INSERT INTO KNJIGA(ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena,zanr_id, opis, autor_id) VALUES('978-3-16-148410-1',200,'2019-3-3','Bela griva','', 6,1, 'Onako',2);
+INSERT INTO KNJIGA(ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena,zanr_id, opis, autor_id) VALUES('978-3-16-148410-2',300,'2017-4-4', 'Bele klizaljke','', 9,2,'Odlicna knjiga',2);
+INSERT INTO KNJIGA(ISBN, broj_Strana, datum_Objavljivanja, naslov, naslovna_Fotografija, ocena,zanr_id, opis, autor_id) VALUES('978-3-16-148410-3',400,'2020-5-5','Osnove finansijskog inzenjeringa 1','',8,2,'Super',1);
 
 INSERT INTO STAVKA_POLICE(polica_id,knjiga_id) VALUES(1,1);
 INSERT INTO STAVKA_POLICE(polica_id,knjiga_id) VALUES(1,2);

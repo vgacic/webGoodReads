@@ -108,14 +108,15 @@ public class KnjigaRestController {
     }
 
     @GetMapping("api/pretrazi/{naslov}")
-    public ResponseEntity<List<KnjigaDto>> pretraga(@RequestParam String pretraga) {
-        List<Knjiga> knjige = new ArrayList<>();
-        knjige.addAll(knjigaService.findAllByNaslov(pretraga));
-        List<KnjigaDto> dtos = new ArrayList<>();
-        for (Knjiga knjiga : knjige)
-            dtos.add(new KnjigaDto(knjiga));
+    public ResponseEntity<KnjigaDto> pretraga(@PathVariable(name = "naslov")String naslov) {
+        Knjiga k =knjigaService.nadjiKnjiguPoNaslovu(naslov);
+        if(k==null)
+        {
+            return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
+        }
+        KnjigaDto dto = new KnjigaDto(k);
+        return ResponseEntity.ok(dto);
 
-        return ResponseEntity.ok(dtos);
     }
 
 

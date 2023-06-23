@@ -1,20 +1,7 @@
 <template>
-   <header>
-
-    <div>
-        <ul class="menu">
-        </ul>
-    </div>
-    </header>
+ <h1>Home autor</h1>
 </template>
 <script>
 
-export default{
-    name:'Welcome',
-    data(){
-        return{
-            msg:'Welcome to BookVerse AUTOR'
-        }
-    }
-}
+
 </script>
