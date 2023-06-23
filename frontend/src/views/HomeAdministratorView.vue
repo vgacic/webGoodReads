@@ -20,7 +20,7 @@
       <h2>Korisnici</h2>
       <ul v-if="korisnici.length > 0">
         <li v-for="korisnik in korisnici" :key="korisnik.id">
-         Ime:  {{ korisnik.ime }} <br> Prezime: {{ korisnik.prezime }}<br> Datum rodjenja: {{ korisnik.datumRodjenja }} <hr>
+         Ime:  {{ korisnik.ime }} <br> Prezime: {{ korisnik.prezime }}<br> <hr>
         </li>
       </ul>
       <p v-else>No users found.</p>
@@ -32,6 +32,9 @@
 
       <h2>Dodaj knjigu</h2>
       <button @click="dodajKnjigu">Dodaj Knjigu</button>
+
+      <h2>Ispisi police</h2>
+      
 
 </template>
 

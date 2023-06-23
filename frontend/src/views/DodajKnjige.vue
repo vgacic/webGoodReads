@@ -35,7 +35,7 @@
         this.errorMessage = '';
         this.successMessage = '';
   
-        axios.post('/api/autor/dodajKnjige', this.knjiga)
+        axios.post('http://localhost:8880/api/autor/dodajKnjige', this.knjiga,{ withCredentials: true })
           .then(response => {
             this.successMessage = response.data;
             this.knjiga = {
@@ -56,12 +56,30 @@
   };
   </script>
   
-  <style>
-  .error-message {
-    color: red;
-  }
-  
-  .success-message {
-    color: green;
-  }
-  </style>
+  <style scoped>
+h1 {
+  color: lightpink;
+}
+
+label {
+  color: lightpink;
+}
+
+input {
+  background-color: lightpink;
+  color: white;
+}
+
+button {
+  background-color: lightpink;
+  color: white;
+}
+
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}
+</style>

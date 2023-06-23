@@ -1,15 +1,15 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeAdministratorView from '../views/HomeAdministratorView.vue';
 import HomeAutorView from '../views/HomeAutorView.vue';
-import Login from '@/components/Login';
-import Register from '@/components/Register';
+import Login from '@/components/Login.vue';
+import Register from '@/components/Register.vue';
 import HomePage from '../views/HomePage.vue';
 import LoggedIn from '../views/LoggedIn.vue';
 import Logout from '@/components/Logout.vue';
 import HomeCitalacView from '../views/HomeCitalacView.vue';
 import PretraziKnjiguPoNaslovu from '../views/PretraziKnjiguPoNaslovu.vue';
 import PretraziKorisnikaPoId from '../views/PretraziKorisnikaPoId.vue';
-import DodajKnjigu from '../views/DodajKnjigu.vue';
+import DodajKnjige from '../views/DodajKnjige.vue';
 
 
 
@@ -83,7 +83,7 @@ const routes = [
   {
     path:'/dodajKnjigu',
     name:'DodajKnjigu',
-    component:DodajKnjigu
+    component:DodajKnjige
   },
 
 

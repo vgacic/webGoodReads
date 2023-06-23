@@ -24,7 +24,7 @@ methods: {
     fetch('http://localhost:8880/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.LoginDto)
+      body: JSON.stringify(payload)
     }).then(response => {
       if (response.ok) {
         return response.json()
@@ -39,36 +39,65 @@ methods: {
 }
 </script>
 
-
 <style>
-/* Add your component-specific styles here */
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-label {
-  color: lightpink;
-  margin-top: 1rem;
-}
-
-.input-field {
-  background-color: lightpink;
-  border: none;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.submit-button {
-  background-color: lightpink;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-}
-
-.submit-button:hover {
-  background-color: #ff7b9c;
-}
+.log {
+    display: flex;
+    justify-content: center;
+    place-items: center;
+    height: 100vh;
+  }
+  
+  .login-form {
+    width: 300px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  .login-form button {
+    width: 100%;
+    padding: 8px;
+    background-color: lightpink;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .login-form button:hover {
+    background-color: #e7cfd9;
+  }
+  
+  .motive {
+    position: relative;
+    width: 100%;
+    height: 50px;
+  }
+  
+  .motive:before,
+  .motive:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .motive:before {
+    background-color: lightpink;
+    transform: skewY(-3deg);
+  }
+  
+  .motive:after {
+    background-color: #f2f2f2;
+    transform: skewY(3deg);
+  }
 </style>
